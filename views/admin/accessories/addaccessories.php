@@ -87,7 +87,8 @@ input[type=number]::-webkit-outer-spin-button {
                                   <div class="mb-3 col-md-6">
                                     <label class="form-label" for="basic-icon-default-fullname">Product image</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="file"  name="images" accept='image/*' class="form-control" required>
+                                        <input type="file"  name="images[]" accept='image/*' class="form-control" multiple>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -124,6 +125,50 @@ input[type=number]::-webkit-outer-spin-button {
                                     </div>
                                 </div>
                             </div>
+                            
+                            
+            
+                            
+                          <div class='row'>
+                                <div class='col-md-12 mt-5'>
+                                    <h4>Add Variation 
+                                    <!--<button class='btn btn-sm btn-primary' type='button' onclick='addMoreVariation()'>Add More</button>-->
+                                    </h4>
+                                    <table class='table'>
+                                        <thead>
+                                            <tr>
+                                                <th>Color</th>
+                                                <th>Color Name</th>
+                                                <th>Image</th>
+                                                <th>Image Url</th>
+                                                <!--<th>Action</th>-->
+                                            </tr>
+                                        </thead>
+                                        <tbody id='variationBody'>
+                                            <tr>
+                                                <td>
+                                                    <input type='color' name='color[0]' id='color[0]' class='form-control'/>
+                                                </td>
+                                                <td>
+                                                    <input type='text' name='colorName[0]' id='colorName[0]' class='form-control'/>
+                                                </td>
+                                                <td>
+                                                    <input type='file' name='imageFile[]' accept='image/*' multiple id='imageFile[0]' class='form-control'/>
+                                                </td>
+                                                <td>
+                                                    <input type='text' name='imageUrl[0]' id='imageUrl[0]' class='form-control'/>
+                                                </td>
+                                                <!--<td>-->
+                                                <!--    <button type='button' class='btn btn-sm btn-danger'><i class="fa fa-trash" aria-hidden="true"></i></button>-->
+                                                <!--</td>-->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            
+                         <br><br>
                                 
                             <button class="btn btn-primary" name="submit">Submit</button>
                     </div>
@@ -147,7 +192,36 @@ function myFunction() {
  
 }
 
-
-
 </script>
+
+<script type="text/javascript">
+
+function showVariationModel(){
+    $("#exampleModal").modal('show');
+}
+
+function addMoreVariation(){
+    var rowCount = $('#myTable tr').length;
+    let i = rowCount+1;
+    $("#variationBody").append(`
+        <tr>
+            <td>
+                <input type='color' name='color[${i}]' id='color[${i}]' class='form-control'/>
+            </td>
+            <td>
+                <input type='text' name='colorName[${i}]' id='colorName[${i}]' class='form-control'/>
+            </td>
+            <td>
+                <input type='file' accept='image/*' multiple name='imageFile[]' id='imageFile[${i}]' class='form-control'/>
+            </td>
+            <td>
+                <input type='text' name='imageUrl[${i}]' id='imageUrl[${i}]' class='form-control'/>
+            </td>
+            <td>
+                <button type='button' class='btn btn-sm btn-danger'><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </td>
+        </tr>
+    `)
+}
+
 <?php $this->load->view('admin/includes/footer');?>

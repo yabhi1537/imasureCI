@@ -30,7 +30,7 @@ if(empty($admin)){
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>imeasure</title>
+    <title>Horizon</title>
     
     <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
@@ -96,6 +96,13 @@ if(empty($admin)){
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar  ">
         <div class="layout-container">
+
+
+
+
+
+
+
             <!-- Menu -->
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
@@ -106,7 +113,7 @@ if(empty($admin)){
                         <span class="app-brand-logo demo">
 
                         </span>
-                        <span class="app-brand-text demo menu-text fw-bolder ms-2"><img style="width: 150px;" src='<?php echo base_url('assets/') ?>image/logo.png'   /></span>
+                        <span class="app-brand-text demo menu-text fw-bolder ms-2"><img style="width: 150px;" src='<?php echo base_url('assets/images/logo/horizon.png')?>'   /></span>
                     </a>
 
                     <a href="javascript:void(0);"
@@ -117,28 +124,23 @@ if(empty($admin)){
 
                 <div class="menu-inner-shadow"></div>
 
-                <?php
-                 $slug = $this->uri->segment(2);
-                 //print_r($product_id);die();
-                ?>
-
                 <ul class="menu-inner py-1">
 
                     <!-- Dashboard -->
-                    <li class="menu-item  <?php echo ($slug  == "dashboard")? 'active':'' ?>">
-                        <a href="<?php echo base_url('admin/dashboard') ?>" class="menu-link">
+                    <li class="menu-item ">
+                        <a href="<?php echo base_url('admin/HomeController') ?>" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
 
 
-                    <li class="menu-item ">
+                    <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
                             <div data-i18n="Account Settings">Product Managment</div>
                         </a>
-                        <ul class="menu-sub <?php echo ($slug  == "Add-product")? 'active':'' ?>">
+                        <ul class="menu-sub">
                             <li class="menu-item">
                                 <a href="<?php echo base_url('Admin/Add-product'); ?>" class="menu-link">
                                     <div data-i18n="Account">Product</div>
@@ -166,7 +168,7 @@ if(empty($admin)){
                             <!--        <div data-i18n="Connections">Product Description</div>-->
                             <!--    </a>-->
                             <!--</li>-->
-                             <li class="menu-item <?php echo ($slug  == "BulkController")? 'active':'' ?>">
+                             <li class="menu-item">
                                 <a href="<?php echo base_url('admin/BulkController'); ?>" class="menu-link">
                                     <div data-i18n="Account">Bulk Product</div>
                                 </a>
@@ -174,32 +176,68 @@ if(empty($admin)){
                         </ul>
                     </li>
 
-                    <li class="menu-item ">
+                    <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
                             <div data-i18n="Account Settings">Category</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item <?php echo ($slug  == "CategoryController")? 'active':'' ?>">
+                            <li class="menu-item">
                                 <a href="<?php echo base_url('admin/category/CategoryController'); ?>" class="menu-link">
                                     <div data-i18n="Account">Category</div>
                                 </a>
                             </li>
-                            <li class="menu-item <?php echo ($slug  == "SubcategoryController")? 'active':'' ?>">
+                            <li class="menu-item">
                                 <a href="<?php echo base_url('admin/category/SubcategoryController/'); ?>" class="menu-link">
                                     <div data-i18n="Account">Sub-Category</div>
                                 </a>
                             </li>
-                            <li class="menu-item <?php echo ($slug  == "SubcategoryController")? 'active':'' ?>">
-                                <a href="<?php echo base_url('admin/child-sub-category'); ?>" class="menu-link">
-                                    <div data-i18n="Account">Sub-Sub-Category</div>
+                            <li class="menu-item">
+                                <a href="<?php echo base_url('admin/category/SubcategoryminController/'); ?>" class="menu-link">
+                                    <div data-i18n="Account">Sub-Category_mini</div>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     
-                   
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Accessories</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="<?php echo base_url('admin/accessories/Accessories/addAccessories'); ?>" class="menu-link">
+                                    <div data-i18n="Account">Add Accessories</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="<?php echo base_url('admin/accessories/Accessories/'); ?>" class="menu-link">
+                                    <div data-i18n="Account">All Accessories</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Variation</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="<?php echo base_url('admin/variation/Variation/addvariation'); ?>" class="menu-link">
+                                    <div data-i18n="Account">Add Variation</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="<?php echo base_url('admin/variation/Variation/mediaPage'); ?>" class="menu-link">
+                                    <div data-i18n="Account">Media</div>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
                     
 
                     <li class="menu-item">
@@ -239,64 +277,64 @@ if(empty($admin)){
                         </ul>
                     </li>
                     
-                     
-                    <li class="menu-item <?php echo ($slug  == "blogs")? 'active':'' ?>">
+                     <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Banners</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="<?php echo base_url('admin/BannerController'); ?>" class="menu-link">
+                                    <div data-i18n="Account">Upload Banners</div>
+                                </a>
+                            </li>
+                            
+                            <li class="menu-item">
+                                <a href="<?php echo base_url('admin/PageController'); ?>" class="menu-link">
+                                    <div data-i18n="Account">Pages</div>
+                                </a>
+                            </li>
+                          
+                            
+                        </ul>
+                    </li>
+                    <li class="menu-item">
                         <a href="<?php echo base_url('admin/blogs'); ?>" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
                             <div data-i18n="Account">Blogs</div>
                         </a>
                     </li>
-                    <li class="menu-item <?php echo ($slug  == "brands")? 'active':'' ?>">
-                        <a href="<?php echo base_url('admin/brands'); ?>" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                            <div data-i18n="Account">Brands</div>
-                        </a>
-                    </li>
-                    <li class="menu-item <?php echo ($slug  == "sliders")? 'active':'' ?>">
-                        <a href="<?php echo base_url('admin/sliders'); ?>" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                            <div data-i18n="Account">Sliders</div>
-                        </a>
-                    </li>
-                    <li class="menu-item <?php echo ($slug  == "headerfooter")? 'active':'' ?>">
+                    <li class="menu-item">
                         <a href="<?php echo base_url('admin/headerfooter'); ?>" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
                             <div data-i18n="Account">Header Footer</div>
                         </a>
                     </li>
-                     
                     
                     
-                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                          <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                          <div data-i18n="Terms & Condition">Terms & Condition</div>
-                        </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item <?php echo ($slug  == "privatepolicy")? 'active':'' ?>">
-                                <a href="<?php echo base_url('admin/privatepolicy') ?>" class="menu-link" target="_blank">
-                                    <div data-i18n="Basic">Privacy Policy</div>
-                                </a>
-                            </li>
-                             <li class="menu-item <?php echo ($slug  == "terms_condition")? 'active':'' ?>">
-                                <a href="<?php echo base_url('admin/terms_condition') ?>" class="menu-link" target="_blank">
-                                    <div data-i18n="Basic">Terms & Condition</div>
-                                </a>
-                            </li>
-                            
-                           
-                          <!--<li class="menu-item">-->
-                          <!--  <a href="auth-register-basic.html" class="menu-link" target="_blank">-->
-                          <!--    <div data-i18n="Basic">Register</div>-->
-                          <!--  </a>-->
-                          <!--</li>-->
-                          <!--<li class="menu-item">-->
-                          <!--  <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">-->
-                          <!--    <div data-i18n="Basic">Forgot Password</div>-->
-                          <!--  </a>-->
-                          <!--</li>-->
-                        </ul>
-                    </li> 
+                    <!-- <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+        <div data-i18n="Authentications">Authentications</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="auth-login-basic.html" class="menu-link" target="_blank">
+            <div data-i18n="Basic">Login</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="auth-register-basic.html" class="menu-link" target="_blank">
+            <div data-i18n="Basic">Register</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
+            <div data-i18n="Basic">Forgot Password</div>
+          </a>
+        </li>
+      </ul>
+    </li> -->
                     <!-- <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-cube-alt"></i>

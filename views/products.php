@@ -1,174 +1,440 @@
 <?php
-$this->load->view('includes/header');
+
+        $this->load->view('includes/header');
+
 ?>
-<div class="holder">
+<style>
+.addtocard {
+    background: black;
+    color: white;
+    width: 223px;
+    height: 50px;
+    border-radius: 13px;
+}
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="header-top-campaign border-bottom">
     <div class="container">
-        <?php
-            if($catestep == 1){
-                $subCatId = $subcategosryid;
-                $this->db->where('sub_category',$subCatId);
-                $sub_category = $this->db->get('child_subcategory')->result_array();
-                if(!empty($sub_category)){
-                    ?>
-        <div class="title-wrap title-md">
-            <h4 class="mb-0">Sub Category (<?php echo $categorysaasa ?>)</h4>
-        </div>
-        <div class='row mt-0'>
-            <?php
-                        foreach($sub_category as $sukey => $subCategory){
-                            $subsubUrl = $string = strtolower(str_replace(' ', '-',$subCategory['slug']));
-                        ?>
-            <div class='card col-md-5 p-0 m-1'>
-                <a href='<?php echo base_url('products/'.$subsubUrl) ?>'>
-                    <div class='card-body'>
-                        <?php
-                                            if(!empty($subCategory['images'])){
+        <div class="row justify-content-center">
+            <div class="col-xl-12 col-lg-6 col-md-10">
+                <div class="  ">
+                    <div class="">
+                        <div class="d_flex row" >
+                            <div id="subcategory" style="color: black;">
+                      <!--</br>-->
+                                <ul class="list-unstyled d-flex justify-content-between">
+                               
+                                    <?php
+                                    foreach($subcategoryid as $key => $value){
+                                        $subcaturl = strtolower(str_replace(" ","-",$value['subcat']));
                                         ?>
-                        <img src="<?php echo base_url('admin-assets/uploads/category-image/') ?><?php echo $subCategory['images'] ?>"
-                            alt="" height="80" width="80">
-                        <?php
-                                        }
-                                        ?>
-                        <small style='white-space: nowrap;'><a
-                                href='<?php echo base_url('products/'.$subsubUrl) ?>'><?php echo $subCategory['category_name'] ?></a></small>
-                    </div>
-                </a>
-            </div>
-            <?php
-                        }
-                        ?>
-        </div>
-        <?php
-                }
-            
-            }else if($catestep == 0){
-                $subCatId = $subcategosryid;
-                $this->db->where('category',$subCatId);
-                $sub_category = $this->db->get('subcategory')->result_array();
-                if(!empty($sub_category)){
-                    ?>
-        <div class="title-wrap title-md">
-            <h4 class="mb-0">Sub Category (<?php echo $categorysaasa ?>)</h4>
-        </div>
-
-        <div class='row mt-0'>
-            <?php
-        foreach($sub_category as $sukey => $subCategory){
-            $subsubUrl = $string = strtolower(str_replace(' ', '-',$subCategory['subcat']));
-        ?>
-            <div class='card col-md-5 p-0 m-1'>
-                <a href='<?php echo base_url('products/'.$subsubUrl) ?>'>
-                    <div class='card-body'>
-                        <?php
-                            if(!empty($subCategory['images'])){
-                        ?>
-                        <img src="<?php echo base_url('admin-assets/uploads/category-image/') ?><?php echo $subCategory['image'] ?>"
-                            alt="" height="80" width="80">
-                        <?php
-                        }
-                        ?>
-                        <small style='white-space: nowrap;'><a
-                                href='<?php echo base_url('products/'.$subsubUrl) ?>'><?php echo $subCategory['subcat'] ?></a></small>
-                    </div>
-                </a>
-            </div>
-            <?php
-        }
-        ?>
-        </div>
-        <?php
-                }
-            }
-            
-           ?>
-
-        <!--<div class="title-wrap title-md">-->
-        <!--    <h5 class="">Products : <?php echo $categorysaasa ?></h5>-->
-        <!--</div>-->
-
-        <div class="prd-grid-wrap position-relative">
-            <div
-                class="prd-grid data-to-show-4 data-to-show-lg-3 data-to-show-md-2 data-to-show-sm-2 data-to-show-xs-2 js-category-grid ">
-                <div class='row'>
-
-
-                    <?php
-                    
-                        foreach($products as $key => $value){
-                            $image = explode(',', $value['image']);
-                            $proUrl = $string = strtolower(str_replace(' ', '-', $value['product_title']));
-                            ?>
-
-                    <div class="prd prd--style2 prd-labels--max prd-labels-shadow col-md-3">
-                        <div class="prd-inside">
-                            <div class="">
-                                <!--<img src="<?php echo base_url('assets/images/products/'.$image[0]) ?>">-->
-                                <a href="<?php echo base_url('product/'.$proUrl) ?>" class="">
-                                    <img src="<?php echo base_url('assets/images/products/'.$image[0]) ?>">
-                                    <div class="foxic-loader"></div>
-                                </a>
-
-                            </div>
-                            <div class="prd-info">
-                                <div class="prd-info-wrap">
-
-                                    <div class="prd-tag"><a
-                                            href="<?php echo base_url('product/'.$proUrl) ?>"><?php echo $value['product_title'] ?></a>
-                                    </div>
-                                    <h2 class="prd-title"><a
-                                            href="<?php echo base_url('product/'.$proUrl) ?>"><?php echo $value['pname'] ?></a>
-                                    </h2>
-                                    <div class="prd-description">
-                                        Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora
-                                        torquent per
-                                        conubia nostra, per inceptos himenaeos. Nam nec ante sed lacinia.
-                                    </div>
-                                    <div class="prd-action">
-                                        <form action="<?php echo base_url('product/'.$proUrl) ?>">
-                                            <button class="btn js-prd-addtocart"
-                                                data-product='{"name": "Window Air Conditioner", "path":"image/products/product-07-1.jpg", "url":"#", "aspect_ratio":0.778}'>Add
-                                                To Cart</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="prd-hovers">
-                                    <div class="prd-circle-labels">
-                                        <div><a href="<?php echo base_url('product/'.$proUrl) ?>"
-                                                class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
-                                                title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a href="#"
-                                                class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
-                                                title="Remove From Wishlist"><i class="icon-heart-hover"></i></a></div>
-                                        <div class="prd-hide-mobile"><a
-                                                href="<?php echo base_url('product/'.$proUrl) ?>"
-                                                class="circle-label-qview js-prd-quickview"
-                                                data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK
-                                                    VIEW</span></a></div>
-                                    </div>
-                                    <div class="prd-price">
-                                        <div class="price-old">$ 200</div>
-                                        <div class="price-new">$ 180</div>
-                                    </div>
-                                    <div class="prd-action">
-                                        <div class="prd-action-left">
-                                            <form action="<?php echo base_url('product/'.$proUrl) ?>">
-                                                <button class="btn js-prd-addtocart"
-                                                    data-product='{"name": "Window Air Conditioner", "path":"image/products/product-07-1.jpg", "url":"#", "aspect_ratio":0.778}'>Add
-                                                    To Cart</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                          <li style='cursor:pointer;text-align: center;'  class="subcategort"> <a href="<?php echo base_url('products/subcategory/').$subcaturl ?>"> <img style="max-width: 100%; max-height: 100%;" src="<?php echo base_url('admin-assets/uploads/subcategory/').$value['image'] ?>">
+                                              <p style="color:white;"><?php echo $value['subcat']?></p></a>
+                                          </li>
+                                        <?php
+                                    }
+                                    ?>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <?php
-                        }
-                    ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<main class="main-wrapper">
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <h2 class="title" style="text-transform: capitalize;"><?php echo $categorysaasa[0]['catname'] ?></h2>
+            </div>
+            <div class="row">
+                <?php  if(!empty($products)){ foreach($products as $ipadss){ 
+                   $imagesnnm =  explode(",",$ipadss['image']);
+                   $imagesname  =$imagesnnm[0];
+                //   print_r($imagesname);
+                ?>
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 prod-sect">
+                    <div class="axil-product product-style-one">
+                        
+                          <?php
+                                $prnameurl =strtolower(str_replace(" ","-",$ipadss['product_title']));
+                                ?>
+                        <div class="thumbnail">
+                            <a href="<?php echo base_url('singleproduct/').$prnameurl ?>" tabindex="0">
+                                <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800" loading="lazy"
+                                    class="main-img sal-animate"
+                                    src="<?php echo  base_url('assets/images/product/'). $imagesname ?>"
+                                    alt="Product Images">
+                                <img class="hover-img"
+                                    src="<?php echo  base_url('assets/images/product/'). $imagesname ?>"
+                                    alt="Product Images">
+                            </a>
+                            <div class="label-block label-right">
+                            <?php 
+                           if($ipadss['sales']=="1"){
+                            ?>
+                                <div class="product-badget">SALE</div>
+                            <?php } ?>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <div class="inner text-center">
+                              
+                                
+                                <h4 class="title"><a href="<?php echo base_url('singleproduct/').$prnameurl ?>"
+                                        tabindex="0"><?php echo $ipadss['pname'] ?></a></h4>
+                                 <h5 class="title"><a href="<?php echo base_url('singleproduct/').$prnameurl ?>"
+                                        tabindex="0"><?php echo $ipadss['description'] ?></a></h5>
+    
+                                <div class="product-price-variant my-3">
+                                    <span class="price current-price"><?php echo $ipadss['price'] ?></span>
+                                    <span
+                                        class="price old-price"><?php echo $ipadss['price']  ?></span>
+                                </div>
+                                <div class="product-">
+                                    <ul class="cart-action">
+                                        <li class="select-option w-50 bg-light">
+                                             <a href="<?php echo base_url('singleproduct/').$prnameurl ?>" style="margin-left:-45px;" class="addtocard" tabindex="0">Inquire Now</a>
+                                            <!--<a href="<?php echo base_url('singleproduct/').$prnameurl ?>"-->
+                                            <!--    tabindex="0">-->
+                                            <!--    Add to Cart-->
+                                            <!--</a>-->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php }}else{ ?>
+                
+                <h3>There is no Products Related to on this Category</h3>
+                
+                <?php } ?>
+              
+            </div>
+            <!--<div class="row">-->
+            <!--    <div class="col-lg-12 text-center mt--20 mt_sm--0">-->
+            <!--        <a href="#" class="axil-btn btn-bg-lighter btn-load-more">View All</a>-->
+            <!--    </div>-->
+            <!--</div>-->
+        </div>
+    </section>
+   
+
+    <div class="axil-why-choose-area  pb_sm--30 py-5">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-3 px-0">
+                    <div class="service-box px-3 border-0">
+                        <div class="icon">
+                            <img src="<?php echo base_url() ?>assets/images/telephone-call.png" alt="Service">
+                        </div>
+                        <h6 class="title">For Sales</h6>
+                        <p>Call us:- <a href="tel:+919826722345">+919826722345</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 px-0">
+                    <div class="service-box px-3 border-0">
+                        <div class="icon">
+                            <img src="<?php echo base_url() ?>assets/images/telephone-call.png" alt="Service">
+                        </div>
+                        <h6 class="title">for after sales</h6>
+                        <p>Call us:- <a href="tel:+919302100512">+919302100512</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 px-0">
+                    <div class="service-box px-3 border-0">
+                        <div class="icon">
+                            <img src="<?php echo base_url() ?>assets/images/email.png" alt="Service">
+                        </div>
+                        <h6 class="title">for after sales</h6>
+                        <!--<p> Contact Us:- <a href="mailto:sanjayneema@horizoncomputers.co.in"></a></p>-->
+                        <p>Contact us  <a href="mailto:sanjayneema@horizoncomputers.co.in">sanjayneema@horizoncomputers.co.in</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 px-0">
+                    <div class="service-box px-3 border-0">
+                        <div class="icon">
+                            <img src="<?php echo base_url() ?>assets/images/email.png" alt="Service">
+                        </div>
+                        <h6 class="title">For Sales</h6>
+                        <p>Contact us <a href="mailto:tarun@horizoncomputers.co.in">tarun@horizoncomputers.co.in</a></p>
+                        <!--<p>Contact Us:-<a href="mailto:tarun@horizoncomputers.co.in"></a>tarun@horizoncomputers.co.in</p>-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</main>
+
+
+<!--<div class="cart-dropdown" id="cart-dropdown">-->
+<!--    <div class="cart-content-wrap">-->
+<!--        <div class="cart-header">-->
+<!--            <h2 class="header-title">Cart review</h2>-->
+<!--            <button class="cart-close sidebar-close"><i class="fas fa-times"></i></button>-->
+<!--        </div>-->
+<!--        <div class="cart-body">-->
+<!--            <ul class="cart-item-list">-->
+<!--                <li class="cart-item">-->
+<!--                    <div class="item-img">-->
+<!--                        <a href="single-#"><img-->
+<!--                                src="<?php echo base_url() ?>assets/images/product/electric/product-01.png"-->
+<!--                                alt="Commodo Blown Lamp"></a>-->
+<!--                        <button class="close-btn"><i class="fas fa-times"></i></button>-->
+<!--                    </div>-->
+<!--                    <div class="item-content">-->
+<!--                        <div class="product-rating">-->
+<!--                            <span class="icon">-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                            </span>-->
+<!--                            <span class="rating-number">(64)</span>-->
+<!--                        </div>-->
+<!--                        <h3 class="item-title"><a href="single-product-#">Wireless PS Handler</a></h3>-->
+<!--                        <div class="item-price"><span class="currency-symbol">$</span>155.00</div>-->
+<!--                        <div class="pro-qty item-quantity">-->
+<!--                            <input type="number" class="quantity-input" value="15">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="cart-item">-->
+<!--                    <div class="item-img">-->
+<!--                        <a href="single-product-#"><img-->
+<!--                                src="<?php echo base_url() ?>assets/images/product/electric/product-02.png"-->
+<!--                                alt="Commodo Blown Lamp"></a>-->
+<!--                        <button class="close-btn"><i class="fas fa-times"></i></button>-->
+<!--                    </div>-->
+<!--                    <div class="item-content">-->
+<!--                        <div class="product-rating">-->
+<!--                            <span class="icon">-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                            </span>-->
+<!--                            <span class="rating-number">(4)</span>-->
+<!--                        </div>-->
+<!--                        <h3 class="item-title"><a href="single-product-#">Gradient Light Keyboard</a></h3>-->
+<!--                        <div class="item-price"><span class="currency-symbol">$</span>255.00</div>-->
+<!--                        <div class="pro-qty item-quantity">-->
+<!--                            <input type="number" class="quantity-input" value="5">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="cart-item">-->
+<!--                    <div class="item-img">-->
+<!--                        <a href="single-product-#"><img-->
+<!--                                src="<?php echo base_url() ?>assets/images/product/electric/product-03.png"-->
+<!--                                alt="Commodo Blown Lamp"></a>-->
+<!--                        <button class="close-btn"><i class="fas fa-times"></i></button>-->
+<!--                    </div>-->
+<!--                    <div class="item-content">-->
+<!--                        <div class="product-rating">-->
+<!--                            <span class="icon">-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                            </span>-->
+<!--                            <span class="rating-number">(6)</span>-->
+<!--                        </div>-->
+<!--                        <h3 class="item-title"><a href="single-#">HD CC Camera</a></h3>-->
+<!--                        <div class="item-price"><span class="currency-symbol">$</span>200.00</div>-->
+<!--                        <div class="pro-qty item-quantity">-->
+<!--                            <input type="number" class="quantity-input" value="100">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="cart-footer">-->
+<!--            <h3 class="cart-subtotal">-->
+<!--                <span class="subtotal-title">Subtotal:</span>-->
+<!--                <span class="subtotal-amount">$610.00</span>-->
+<!--            </h3>-->
+<!--            <div class="group-btn">-->
+<!--                <a href="#" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>-->
+<!--                <a href="#" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="cart-dropdown" id="cart-dropdown">-->
+<!--    <div class="cart-content-wrap">-->
+<!--        <div class="cart-header">-->
+<!--            <h2 class="header-title">Cart reviews</h2>-->
+<!--            <button class="cart-close sidebar-close"><i class="fas fa-times"></i></button>-->
+<!--        </div>-->
+<!--        <div class="cart-body">-->
+<!--            <ul class="cart-item-list">-->
+<!--                <li class="cart-item">-->
+<!--                    <div class="item-img">-->
+<!--                        <a href="single-#"><img-->
+<!--                                src="<?php echo base_url() ?>assets/images/product/electric/product-01.png"-->
+<!--                                alt="Commodo Blown Lamp"></a>-->
+<!--                        <button class="close-btn"><i class="fas fa-times"></i></button>-->
+<!--                    </div>-->
+<!--                    <div class="item-content">-->
+<!--                        <div class="product-rating">-->
+<!--                            <span class="icon">-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                            </span>-->
+<!--                            <span class="rating-number">(64)</span>-->
+<!--                        </div>-->
+<!--                        <h3 class="item-title"><a href="single-product-#">Wireless PS Handler</a></h3>-->
+<!--                        <div class="item-price"><span class="currency-symbol">$</span>155.00</div>-->
+<!--                        <div class="pro-qty item-quantity">-->
+<!--                            <input type="number" class="quantity-input" value="15">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="cart-item">-->
+<!--                    <div class="item-img">-->
+<!--                        <a href="single-product-#"><img-->
+<!--                                src="<?php echo base_url() ?>assets/images/product/electric/product-02.png"-->
+<!--                                alt="Commodo Blown Lamp"></a>-->
+<!--                        <button class="close-btn"><i class="fas fa-times"></i></button>-->
+<!--                    </div>-->
+<!--                    <div class="item-content">-->
+<!--                        <div class="product-rating">-->
+<!--                            <span class="icon">-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                            </span>-->
+<!--                            <span class="rating-number">(4)</span>-->
+<!--                        </div>-->
+<!--                        <h3 class="item-title"><a href="single-product-#">Gradient Light Keyboard</a></h3>-->
+<!--                        <div class="item-price"><span class="currency-symbol">$</span>255.00</div>-->
+<!--                        <div class="pro-qty item-quantity">-->
+<!--                            <input type="number" class="quantity-input" value="5">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="cart-item">-->
+<!--                    <div class="item-img">-->
+<!--                        <a href="single-product-#"><img-->
+<!--                                src="<?php echo base_url() ?>assets/images/product/electric/product-03.png"-->
+<!--                                alt="Commodo Blown Lamp"></a>-->
+<!--                        <button class="close-btn"><i class="fas fa-times"></i></button>-->
+<!--                    </div>-->
+<!--                    <div class="item-content">-->
+<!--                        <div class="product-rating">-->
+<!--                            <span class="icon">-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                                <i class="fas fa-star"></i>-->
+<!--                            </span>-->
+<!--                            <span class="rating-number">(6)</span>-->
+<!--                        </div>-->
+<!--                        <h3 class="item-title"><a href="single-#">HD CC Camera</a></h3>-->
+<!--                        <div class="item-price"><span class="currency-symbol">$</span>200.00</div>-->
+<!--                        <div class="pro-qty item-quantity">-->
+<!--                            <input type="number" class="quantity-input" value="100">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="cart-footer">-->
+<!--            <h3 class="cart-subtotal">-->
+<!--                <span class="subtotal-title">Subtotal:</span>-->
+<!--                <span class="subtotal-amount">$610.00</span>-->
+<!--            </h3>-->
+<!--            <div class="group-btn">-->
+<!--                <a href="#" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>-->
+<!--                <a href="#" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title proHeding" id="exampleModalLabel">
+                    
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<?php echo base_url('Singleproduct/addCard') ?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Name</label>
+                        <input type="hidden" name="hidenid" id='hidenid'>
+                        <input type="hidden" name="hidurl" id='hidurl' value='1'>
+                        <input type="text" class="form-control" name="name" required placeholder="Enter Full Name">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="">Email </label>
+                        <input type="email" class="form-control" name="email" required placeholder="Enter Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Mobile Number</label>
+                        <input type="number" class="form-control" name="mobile" required
+                            placeholder="Enter Mobile Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Address</label>
+                        <input type="text" class="form-control" name="address" required placeholder="Enter Address">
+                    </div>
+                </div>
+                <div class="modal-footer w-0">
+                    <button type="submit" class="savechanges btn btn-primary">Save
+                        changes</button>
+                    <button type="button" class="savechanges btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    function showProduct(id){
+        // alert(id);
+        $.ajax({
+            type:"post",
+            url:"<?php echo base_url('Products/getCategoryProduct')?>",
+            data:{id:id},
+        }).done(function(res){
+            alert(res);
+        })
+    }
+
+    function request(id){
+        // alert(id);
+        // alert(proname);
+        $("#hidenid").val(id);
+        $(".proHeding").html( $("#hidname\\["+id+"\\]").val());
+        $("#exampleModal").modal('show');
+    }
+</script>
+<!-- Start Footer Area  -->
 <?php 
         $this->load->view('includes/footer');
     ?>

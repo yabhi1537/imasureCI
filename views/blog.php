@@ -1,51 +1,142 @@
-<div class="page-content">
-    <div class="holder breadcrumbs-wrap mt-0">
-        <div class="container">
-            <ul class="breadcrumbs">
-                <li><a href="<?php echo base_url() ?>">Home</a></li>
-                <li><span>Our Blog</span></li>
-            </ul>
-        </div>
-    </div>
-    <div class="holder">
-        <div class="container">
-            <div class="page-title text-center">
-                <h1>Blog Grid</h1>
-            </div>
-            <div class="post-prws-grid row">
-                <?php
-                    foreach($bloglist as $key => $value){
-                        $newDate = date("M d,Y", strtotime($value['create_at'])); 
-                        ?>
-                    <div class="col-sm-9 col-md-6">
-                        <div class="post-prw-simple">
-                            <div class="post-prw-img">
-                                <a href="<?php echo base_url('blog/'.$value['id']) ?>" class="image-hover-scale image-container"
-                                    style="padding-bottom: 54.44%">
-                                    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        data-src="<?php echo base_url('admin-assets/uploads/').$value['imags'] ?>" class="lazyload fade-up" alt="Post name">
-                                </a>
-                            </div>
-                            <div class="post-prw-links">
-                                <div class="post-prw-date"><?php echo $newDate ?></div>
-                                <div class="post-prw-author">by admin</div>
-                            </div>
-                            <h4 class="post-prw-title"><a href="<?php echo base_url('blog/'.$value['id']) ?>"><?php echo $value['title'] ?></a></h4>
+  <!-- End Header -->
+    <main class="main-wrapper">
+        <!-- Start Breadcrumb Area  -->
+        <div class="axil-breadcrumb-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="inner">
+                            <ul class="axil-breadcrumb">
+                                <li class="axil-breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="separator"></li>
+                                <li class="axil-breadcrumb-item active" aria-current="page">Blogs</li>
+                            </ul>
+                            <h1 class="title">Blog</h1>
                         </div>
                     </div>
-                <?php
-                    }
-                ?>
+                    <div class="col-lg-6 col-md-4">
+                        <div class="inner">
+                            <div class="bradcrumb-thumb">
+                                <!--<img src="assets/images/product/product-45.png" alt="Image">-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="pagination-wrap d-flex mt-4 justify-content-center">
-                <ul class="pagination mt-0">
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                </ul>
+        </div>
+        <!-- End Breadcrumb Area  -->
+        <!-- Start Blog Area  -->
+        <div class="axil-blog-area axil-section-gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row g-5">
+                            <?php
+                            foreach($bloglist as $key => $value){
+                                ?>
+                            <div class="col-md-4">
+                                <div class="content-blog blog-grid">
+                                    <div class="inner">
+                                        <div class="thumbnail">
+                                            <a href="<?php echo base_url('blog/').$value['id'] ?>">
+                                                <img src="<?php echo base_url('admin-assets/uploads/').$value['imags'] ?>" alt="Blog Images">
+                                            </a>
+                                           
+                                        </div>
+                                        <div class="content">
+                                            <h5 class="title"><a href="<?php echo base_url('blog/').$value['id'] ?>"> <?php echo $value['heading'] ?></h5>
+
+                                            <div class="read-more-btn">
+                                                <a class="axil-btn right-icon" href="<?php echo base_url('blog/').$value['id'] ?>">Read More <i
+                                                        class="fal fa-long-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                              <?php
+                            }
+                            
+                            ?>
+                           
+                            
+                        </div>
+                        <!--<div class="post-pagination">-->
+                        <!--    <nav class="navigation pagination" aria-label="Products">-->
+                        <!--        <ul class="page-numbers">-->
+                        <!--            <li><span aria-current="page" class="page-numbers current">1</span></li>-->
+                        <!--            <li><a class="page-numbers" href="#">2</a></li>-->
+                        <!--            <li><a class="page-numbers" href="#">3</a></li>-->
+                        <!--            <li><a class="page-numbers" href="#">4</a></li>-->
+                        <!--            <li><a class="page-numbers" href="#">5</a></li>-->
+                        <!--            <li><a class="next page-numbers" href="#"><i class="fal fa-arrow-right"></i></a>-->
+                        <!--            </li>-->
+                        <!--        </ul>-->
+                        <!--    </nav>-->
+                        <!--</div>-->
+                    </div>
+                   
+
+                </div>
+                <!-- End post-pagination -->
+            </div>
+            <!-- End .container -->
+        </div>
+        <!-- End Blog Area  -->
+
+        
+        </div>
+        <!-- End Axil Newsletter Area  -->
+    </main>
+
+    <div class="service-area">
+        <div class="container">
+            <div class="row row-cols-xl-4 row-cols-sm-2 row-cols-1 row--20">
+                <div class="col">
+                    <div class="service-box service-style-2">
+                        <div class="icon">
+                            <img src="assets/images/icons/service1.png" alt="Service">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">Fast &amp; Secure Delivery</h6>
+                            <p>Tell about your service.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="service-box service-style-2">
+                        <div class="icon">
+                            <img src="assets/images/icons/service2.png " alt="Service">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">Money Back Guarantee</h6>
+                            <p>Within 10 days.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="service-box service-style-2">
+                        <div class="icon">
+                            <img src="assets/images/icons/service3.png" alt="Service">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">24 Hour Return Policy</h6>
+                            <p>No question ask.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="service-box service-style-2">
+                        <div class="icon">
+                            <img src="assets/images/icons/service4.png" alt="Service">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">Pro Quality Support</h6>
+                            <p>24/7 Live support.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+   

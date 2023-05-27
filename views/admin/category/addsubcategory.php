@@ -43,12 +43,12 @@
                                         <input type="text" class="form-control" required name="subcategory" placeholder="Enter Sub Category" />
                                     </div>
                                 </div>
-                                <!--<div class="mb-3 col-md-12">-->
-                                <!--    <label class="form-label" for="basic-icon-default-fullname">Image</label>-->
-                                <!--    <div class="input-group input-group-merge">-->
-                                <!--        <input type="file" class="form-control" required name="image" placeholder="Enter Sub Category" />-->
-                                <!--    </div>-->
-                                <!--</div>-->
+                                <div class="mb-3 col-md-12">
+                                    <label class="form-label" for="basic-icon-default-fullname">Image</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="file" class="form-control" required name="image" placeholder="Enter Sub Category" />
+                                    </div>
+                                </div>
 
                             </div>
 

@@ -2,7 +2,7 @@
 <div class="content-wrapper">
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Category/</span> Sub-Category</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Category/</span> Sub-Category_mini</h4>
         <!-- Basic Layout -->
         <div class="row">
             <div class="col-xl">
@@ -22,45 +22,40 @@
                             if($failure!=""){?>
                         <div class="alert alert-danger"><?php echo $failure ?></div>
                     <?php } ?>
-                  
-                               
-
-                        <form method="post" action="<?php echo base_url('admin/category/SubcategoryController/editSubcategory/').$subcategory[0]['id'] ?>" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo base_url('admin/category/SubcategoryminController/addSubcategorymini') ?>" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="mb-3 col-md-12">
-                                    <label class="form-label" for="basic-icon-default-fullname">Category Name</label>
+                                    <label class="form-label" for="basic-icon-default-fullname">Sub Category Name</label>
                                     <div class="input-group input-group-merge">
-                                        <select name="catname"  class="form-control" required>
-                                            <option value="">Select Category</option>
-                                            <?php   foreach($category as $categories){ ?>
+                                        <select name="subcategory"  class="form-control" required>
+                                            <option value="">Select Sub Category</option>
+                                            <?php   foreach($subcategory as $categories){ ?>
 
-                                            <option value="<?php echo $categories['id'] ?>"><?php echo $categories['catname'] ?></option>
+                                            <option value="<?php echo $categories['id'] ?>"><?php echo $categories['subcat'] ?></option>
 
                                             <?php } ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="mb-3 col-md-12">
-                                    <label class="form-label" for="basic-icon-default-fullname">Sub-Category</label>
+                                    <label class="form-label" for="basic-icon-default-fullname">Sub-Category-mini</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="text" class="form-control" required name="subcategory" placeholder="Enter Sub Category" value="<?php echo $subcategory[0]['subcat'] ?>"/>
+                                        <input type="text" class="form-control" required name="subcategorymini" placeholder="Enter Sub Category Mini" />
                                     </div>
                                 </div>
-
                                 <div class="mb-3 col-md-12">
                                     <label class="form-label" for="basic-icon-default-fullname">Image</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="file" class="form-control"  name="image" placeholder="Enter Sub Category" value=""/>
-                                        <input type="hidden" name="hdnimage" value="<?php echo $subcategory[0]['image'] ?>">
+                                        <input type="file" class="form-control" required name="image" placeholder="Enter Sub Category Mini" />
                                     </div>
-                                    <img src="<?php echo base_url('admin-assets/uploads/subcategory/').$subcategory[0]['image'] ?>" alt="" height="80" width="80">
                                 </div>
+
                             </div>
 
 
                             <button class="btn btn-primary" name="submit">Submit</button>
-                          </div>
-                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -39,6 +39,8 @@
                                 <td>Product Title</td>
                                 <td>Price</td>
                                 <td>Category</td>
+                                <td>Sub Category</td>
+                                <td>Sub-Category-Min</td>
                                 <td>Description</td>
                                 <td>Image</td>
                                 <td>Action</td>
@@ -55,20 +57,22 @@
                                 <td><?php echo $products['product_title'] ?></td>
                                 <td><?php echo $products['price'] ?></td>
                                 <td><?php echo $products['category'] ?></td>
+                                <td><?php echo $products['sub_category'] ?></td>
+                                <td><?php echo $products['sub_category_min'] ?></td>
                                 <td class='descrip'><?php echo $products['description'] ?></td>
                                 <?php 
                                     $image = $products['image'];
                                     $explodeed = explode(",",$image);
                                     $images = $explodeed[0];
                                 ?>
-                                <td class="text-center"><img src="<?php echo base_url('assets/images/products/').  $images ?>" alt="" height="50" width="50"></td>
+                                <td class="text-center"><img src="<?php echo base_url('assets/images/product/').  $images ?>" alt="" height="50" width="50"></td>
                                 <td>
                                     <?php
                                         $prnameurl = strtolower(str_replace(" ","-",$products['product_title']));
                                     ?>
                                     <a href="<?php echo base_url('admin/product/ProductController/editProduct/').$products['id'] ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;
                                     <a  onclick='deleteFunction(<?php echo $products['id'] ?>)' ><i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;
-                                    <a target='_blanck' href="<?php echo base_url("product/".$prnameurl) ?>"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                    <a target='_blanck' href="<?php echo base_url("singleproduct/".$prnameurl) ?>"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
 

@@ -53,7 +53,6 @@
                             <div class="label-block label-right">
                                 <div class="product-badget">SALE</div>
                             </div>
-
                         </div>
                         <div class="product-content">
                             <div class="inner text-center">

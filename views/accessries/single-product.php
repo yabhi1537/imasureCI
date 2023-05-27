@@ -89,7 +89,7 @@ h5 {
                                         <div class="thumbnail">
                                             <a href="<?php echo base_url('admin-assets/uploads/accessories/'.$valueImg) ?>"
                                                 class="popup-zoom">
-                                                <img id="source" src="<?php echo base_url('admin-assets/uploads/accessories/'.$valueImg) ?>"
+                                                <img id="source" src="<?php echo base_url('assets/images/product/'.$valueImg) ?>"
                                                     alt="Product Images">
                                             </a>
                                         </div>
@@ -119,7 +119,7 @@ h5 {
                                     foreach($imgArr as $key => $valueImg){
                                   ?>
                                         <div class="small-thumb-img ">
-                                            <img src="<?php echo base_url('admin-assets/uploads/accessories/'.$valueImg) ?>" alt="samll-thumb">
+                                            <img src="<?php echo base_url('assets/images/product/'.$valueImg) ?>" alt="samll-thumb">
                                             
                                         </div>
                                         

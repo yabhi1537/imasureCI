@@ -52,8 +52,8 @@
 
 
                             <button class="btn btn-primary" name="submit">Submit</button>
-                    </div>
-
+                          </div>
+                        </form>
                 </div>
             </div>
         </div>

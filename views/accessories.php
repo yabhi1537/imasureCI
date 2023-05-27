@@ -70,33 +70,35 @@
                 <!--<h2 class="title" style="text-transform: capitalize;"><?php echo $categorysaasa[0]['catname'] ?></h2>-->
             </div>
             <div class="row">
-                <?php  if(!empty($allacces)){ foreach($allacces as $allaccesries){ 
+                
+                <?php  if(!empty($allacces)){ 
+                    foreach($allacces as $allaccesries){ 
                    $imagesnnm =  explode(",",$allaccesries['image']);
                    $imagesname  =$imagesnnm[0];
+                   $subcaturl = strtolower(str_replace(" ","-",$allaccesries['pname']));
                 //   print_r($imagesname);
                 ?>
                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 prod-sect">
                     <div class="axil-product product-style-one">
-                        <div class="thumbnail">
-                            <a href="<?php echo base_url('accessriess/singleaccesproduct/').$allaccesries['pname'] ?>" tabindex="0">
+                        <div class="thumbnail"> 
+                            <a href="<?php echo base_url('accessriess/singleproduct/').$subcaturl ?>" tabindex="0">
                                 <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800" loading="lazy"
                                     class="main-img sal-animate"
-                                    src="<?php echo base_url('admin-assets/uploads/accessories/').$imagesname ?>"
+                                    src="<?php echo base_url('assets/images/product/').$imagesname ?>"
                                     alt="Product Images">
                                 <img class="hover-img"
-                                    src="<?php echo base_url('admin-assets/uploads/accessories/').$imagesname ?>"
+                                    src="<?php echo base_url('assets/images/product/').$imagesname ?>"
                                     alt="Product Images">
                             </a>
                             <div class="label-block label-right">
                                 <div class="product-badget">SALE</div>
                             </div>
-
                         </div>
                         <div class="product-content">
                             <div class="inner text-center">
-                                <h4 class="title"><a href="<?php echo base_url('singleproduct/').$allaccesries['pname'] ?>"
+                                <h4 class="title"><a href="<?php echo base_url('accessriess/singleproduct/').$subcaturl ?>"
                                         tabindex="0"><?php echo $allaccesries['pname'] ?></a></h4>
-                                 <h5 class="title"><a href="<?php echo base_url('singleproduct/').$allaccesries['pname'] ?>"
+                                 <h5 class="title"><a href="<?php echo base_url('accessriess/singleproduct/').$subcaturl ?>"
                                         tabindex="0"><?php echo $allaccesries['description'] ?></a></h5>
     
                                 <div class="product-price-variant my-3">
@@ -107,7 +109,7 @@
                                 <div class="product-">
                                     <ul class="cart-action">
                                         <li class="select-option w-50 bg-light">
-                                             <a href="<?php echo base_url('singleproduct/').$allaccesries['pname'] ?>" style="margin-left:-45px;" class="addtocard" tabindex="0">Add To Cart</a>
+                                             <a href="<?php echo base_url('accessriess/singleproduct/').$subcaturl ?>" style="margin-left:-45px;" class="addtocard" tabindex="0">Add To Cart</a>
                                             <!--<a href="<?php echo base_url('singleproduct/').$allaccesries['pname'] ?>"-->
                                             <!--    tabindex="0">-->
                                             <!--    Add to Cart-->

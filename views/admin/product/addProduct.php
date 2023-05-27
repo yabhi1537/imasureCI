@@ -1,4 +1,5 @@
 <?php $this->load->view('admin/includes/header');?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/') ?>css/virtual-select.min.css"> 
 <div class="content-wrapper">
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -28,11 +29,12 @@
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label" for="basic-icon-default-fullname">Product Title</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="text" class="form-control"
+                                        <input type="text" id="titelid" class="form-control"
                                             placeholder="Product Title" aria-label="John Doe"
                                             aria-describedby="basic-icon-default-fullname2" required name="producttitle" id="producttitle" />
+
                                     </div>
-                                    <label id='vname_message'></label>
+                                   <label id='vname_message'></label>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label" for="basic-icon-default-fullname">Product Name</label>
@@ -40,113 +42,88 @@
                                         <input type="text" class="form-control"
                                             placeholder="Product Name" aria-label="John Doe"
                                             aria-describedby="basic-icon-default-fullname2" required name="productname" id="productnamess" onChange="return checkvName()" />
+
                                     </div>
-                                    <label id='vname_message'></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                
-                                <!--<div class="mb-3 col-md-3">-->
-                                <!--    <label class="form-label" for="basic-icon-default-fullname">Price</label>-->
-                                <!--    <div class="input-group input-group-merge">-->
-                                <!--        <input type="number" class="form-control" id="price"-->
-                                <!--        placeholder="Price" aria-label="John Doe"-->
-                                <!--        aria-describedby="basic-icon-default-fullname2" onkeyup="myFunction()" required name="price" />-->
-                                <!--    </div>-->
-                                <!--</div>-->
-                                <!--<div class="mb-3 col-md-3">-->
-                                <!--    <label class="form-label" for="basic-icon-default-fullname">Discount in Rs..</label>-->
-                                <!--    <div class="input-group input-group-merge">-->
-                                <!--        <input type="number" class="form-control" id="basic-icon-default-fullname"-->
-                                <!--            placeholder="Discount in Rs...." aria-label="John Doe"-->
-                                <!--            aria-describedby="basic-icon-default-fullname2"  name="discount" />-->
-                                <!--    </div>-->
-                                <!--</div>-->
-                                      <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="basic-icon-default-fullname">Product image</label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="file"  name="files[]" accept='image/*' class="form-control" multiple>
-                                    </div>
-                                </div>
-                                <div class="mb-3 col-md-3">
-                                    <label class="form-label" for="basic-icon-default-fullname">Model No </label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="number" class="form-control" id="quantitty"
-                                            placeholder="Model No " aria-label="John Doe"
-                                            aria-describedby="basic-icon-default-fullname2"  name="modelNo" />
-                                    </div>
-                                </div>
-                                 <div class="mb-3 col-md-3">
-                                    <label class="form-label" for="basic-icon-default-fullname">Part Code </label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="number" class="form-control" id="quantitty"
-                                            placeholder="Part Code" aria-label="John Doe"
-                                            aria-describedby="basic-icon-default-fullname2"  name="partCode" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="mb-3 col-md-12 peorycdesc mt-2">
-                                     <label class="form-label" for="basic-icon-default-fullname">Overview</label>
-                                    <textarea name="overview" id="overview" rows="4"  class='form-control'></textarea>
+                                            <label id='vname_message'></label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-3 col-md-3">
+                                    <label class="form-label" for="basic-icon-default-fullname">Quantity</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="number" class="form-control" id="quantitty"
+                                            placeholder="Quantity" aria-label="John Doe"
+                                            aria-describedby="basic-icon-default-fullname2" onkeyup="myFunction()" required name="qty" />
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3">
+                                    <label class="form-label" for="basic-icon-default-fullname">Price</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="number" class="form-control" id="price"
+                                        placeholder="Price" aria-label="John Doe"
+                                        aria-describedby="basic-icon-default-fullname2" onkeyup="myFunction()" required name="price" />
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="basic-icon-default-fullname">Discount in Rs..</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="number" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="Discount in Rs...." aria-label="John Doe"
+                                            aria-describedby="basic-icon-default-fullname2"  name="discount" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="mb-3 col-md-6">
                                     <label class="form-label" for="basic-icon-default-fullname">Category</label>
-                                    <div class="input-group input-group-merge">
-                                        <select required name="category" id="categoesies" class="form-control" onchange="showSubcatefunction()">
+                                    <div class="input-group input-group-merge hidden-data-get">
+                                        <select required name="category" id="categoesies" multiple  data-search="true" data-silent-initial-value-set="true" class=" multipleSelect" onchange="showSubcatefunction()">
                                             <option value="">Select Category</option>
                                             <?php 
                                                 foreach($category as $categories){
                                             ?>
-                                            <option value="<?php echo $categories['id'] ?>"><?php echo $categories['catname'] ?></option>
+                                            
+                                            <option value="<?php echo $categories['catname'] ?>" ><?php echo $categories['catname'] ?></option>
+                                         
                                             <?php } ?>
                                              <option value="ass">Accessories</option> 
 
                                         </select>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3">
+                   
+                                <div class="mb-3 col-md-6">
                                     <label class="form-label" for="basic-icon-default-fullname">Sub-Category</label>
                                     <div class="input-group input-group-merge">
-                                       <select name="subcategory" id='subcategorymy' class="form-control" required onclick='getChildSubCategory()'>
+                                       <select name="subcategory" id='subcategorymy' class="form-control subcategoesies" onchange="showSubcatefunctionmini()" >
                                            <option value="">Select Subcategory</option>
-                                           <!--<?php  foreach($subcategory as $subcate){   ?>-->
-                                           <!--<option value="<?php echo $subcate['id'] ?>"><?php echo $subcate['subcat'] ?></option>-->
-                                           <!--<?php } ?>-->
+                                           <?php  foreach($subcategory as $subcate){   ?>
+                                           <option value="<?php echo $subcate['id'] ?>"><?php echo $subcate['subcat'] ?></option>
+                                           <?php } ?>
                                        </select>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3">
-                                    <label class="form-label" for="basic-icon-default-fullname">Child-Sub-Category</label>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="basic-icon-default-fullname">Sub-Category-Mini</label>
                                     <div class="input-group input-group-merge">
-                                       <select name="childSubCatId" id='childSubCatId' class="form-control">
-                                           <option value="">Select Child Subcategory</option>
-                                           
+                                       <select name="subcategorymin" id='subcategorymymini' multiple data-search="true" data-silent-initial-value-set="true" class="multipleSelects" >
+                                           <option value="">Select Subcategory Mini</option>
+                                           <?php  foreach($subcategorymini as $subcatemin){   ?>
+                                           <option value="<?php echo $subcatemin['id'] ?>"><?php echo $subcatemin['subcategorymin'] ?></option>
+                                           <?php } ?>
                                        </select>
                                     </div>
                                 </div>
-                                <!--<div class="mb-3 col-md-3">-->
-                                <!--    <label class="form-label" for="basic-icon-default-fullname">Product image</label>-->
-                                <!--    <div class="input-group input-group-merge">-->
-                                <!--        <input type="file"  name="files[]" accept='image/*' class="form-control" multiple>-->
-                                <!--    </div>-->
-                                <!--</div>-->
-                                 <input type="hidden" id='courtsr' value='0'>
-                            <!-- <div class="mb-3 col-md-3">-->
-                            <!--        <label class="form-label" for="basic-icon-default-fullname">Color</label>-->
-                            <!--        </br>-->
-                            <!--        <input type='hidden' id='colrosgs[0]' name='colrosgs[0]' value='0' />-->
-                            <!--        <input type='color' name='colorcode[0]' id='colorcode[0]'/>-->
-                            <!--</div>-->
-                                <!-- <div class="mb-3 col-md-3">-->
-                                <!--    <label class="form-label" for="basic-icon-default-fullname">Item Type</label>-->
-                                <!--    <div class="input-group input-group-merge">-->
-                                <!--         <input type="radio"  value="1" checked name="itemType" required />&nbsp;Product &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-                                <!--         <input type="radio" value="0" name="itemType" required />&nbsp;Accessories-->
-                                <!--    </div>-->
-                                <!--</div>-->
+                             
+                                
+                                 <div class="mb-3 col-md-3">
+                                    <label class="form-label" for="basic-icon-default-fullname">Item Type</label>
+                                    <div class="input-group input-group-merge">
+                                         <input type="radio"  value="1" checked name="itemType" required />&nbsp;Product &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                         <input type="radio" value="0" name="itemType" required />&nbsp;Accessories
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <!--<div class="mb-3 col-md-6">-->
@@ -156,7 +133,12 @@
                                 <!--    </div>-->
                                 <!--</div>-->
 
-                                
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="basic-icon-default-fullname">Product image</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="file"  name="files[]" accept='image/*' class="form-control" multiple>
+                                    </div>
+                                </div>
                                 <div class="mb-3 col-md-3">
                                     <label class="form-label" for="basic-icon-default-fullname">Sale Message</label>
                                     <div class="input-group input-group-merge">
@@ -165,71 +147,122 @@
                                     </div>
                                 </div>
                                 
-                               
+                                <input type="hidden" id='courtsr' value='0'>
+                             <div class="mb-3 col-md-3">
+                                    <label class="form-label" for="basic-icon-default-fullname">Color</label>
+                                    </br>
+                                    <input type='hidden' id='colrosgs[0]' name='colrosgs[0]' value='0' />
+                                    <input type='color' name='colorcode[0]' id='colorcode[0]'/>
                             </div>
-                            
-                            
-                            
-                            
-                            <div class="row">
-                                <!--<div class="mb-3 col-md-5 peorycdelivery">-->
-                                <!--    <label class="form-label" for="basic-icon-default-fullname">Technical Specifications 1</label>-->
-                                <!--        <input type='hidden' id='delivry[0]' name='delivry[0]' value='0' />-->
-                                <!--        <input type="hidden" id='deliveryrowno' value='0'>-->
-                                    <!--<label class="form-label" for="basic-icon-default-fullname">Product Description</label>-->
-                                <!--    <div class="input-group input-group-merge">-->
-                                <!--        <input type="text"  id="delivery" name="delivery[0]" class="form-control" placeholder="Technical Specifications"  required>-->
-                                <!--    </div>-->
-                                <!--</div>-->
-                                <!--<div class="mb-3 col-md-1">-->
-                                <!--    <buttom class="btn btn-primary" id="submitddeli" onclick="showAddDelivery()">Add</buttom>-->
-                                <!--</div>-->
+                            </div>
                                 
-                                <!-- <div class="mb-3 col-md-5 warentid">-->
-                                <!--     <label class="form-label" for="basic-icon-default-fullname">General Specifications 1</label>-->
-                                <!--       <input type='hidden' id='warrenthdnid[0]' name='warrenthdnid[0]' value='0' />-->
-                                <!--        <input type="hidden" id='warrntrowno' value='0'>-->
+                            <div class="row">
+                  
+                                <div class="mb-3 col-md-5 peorycdesc mt-2">
+                                    <label class="form-label" for="basic-icon-default-fullname">Description 1</label>
+                                        <input type='hidden' id='deschdn_id[0]' name='deschdn_id[0]' value='0' />
+                                        <input type="hidden" id='descrowno' value='0'>
+                                    <!--<label class="form-label" for="basic-icon-default-fullname">Product Description</label>-->
+                                    <!-- <div class="hidden-data-get">
+                                        <select  name="categs" id="descateg"  data-search="true" data-silent-initial-value-set="true" >
+                                            <option value="">Select Category</option>
+                                            <?php 
+                                                foreach($category as $categories){
+                                            ?>
+                                            <option value="<?php echo $categories['catname'] ?>"><?php echo $categories['catname'] ?></option>
+                                            <?php } ?>
+                                             <option value="ass">Accessories</option> 
+
+                                        </select>
+                                        </div> -->
+                                    <div class="input-group input-group-merge">
+                                        
+                                    <textarea    id="description" name="description[0]" class="form-control" placeholder="Product Description" required></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3 col-md-1 mt-2">
+                            
+                                    <buttom class="btn btn-primary" id="submitfeature" onclick="showAddvalue()">Add</buttom>
+                                </div>
+                                
+                                 <div class="mb-3 col-md-5 prigrid mt-2">
+                                       <input type='hidden' id='hdn_id[0]' name='hdn_id[0]' value='0' />
+                                        <input type="hidden" id='rowno' value='0'>
+                                    <label class="form-label" for="basic-icon-default-fullname">Product Feature 1</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text"  name="featutes[0]" id="featutes"  class="form-control" placeholder="Product Feature"  required>
+                                    </div>
+                                </div>
+                                  <div class="mb-3 col-md-1">
+                                    
+                                        <buttom class="btn btn-primary"  id="submit" onclick="showValue()">Add 
+                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3 col-md-5 peorycdelivery">
+                                    <label class="form-label" for="basic-icon-default-fullname">Delivry 1</label>
+                                        <input type='hidden' id='delivry[0]' name='delivry[0]' value='0' />
+                                        <input type="hidden" id='deliveryrowno' value='0'>
+                                    <!--<label class="form-label" for="basic-icon-default-fullname">Product Description</label>-->
+                                    <div class="input-group input-group-merge">
+                                        <input type="text"  id="delivery" name="delivery[0]" class="form-control" placeholder="Delivery Content"  required>
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-1">
+                                    <buttom class="btn btn-primary" id="submitddeli" onclick="showAddDelivery()">Add</buttom>
+                                </div>
+                                
+                                 <div class="mb-3 col-md-5 warentid">
+                                     <label class="form-label" for="basic-icon-default-fullname">Warrenty 1</label>
+                                       <input type='hidden' id='warrenthdnid[0]' name='warrenthdnid[0]' value='0' />
+                                        <input type="hidden" id='warrntrowno' value='0'>
                                     <!--<label class="form-label" for="basic-icon-default-fullname">Product Feature</label>-->
-                                <!--    <div class="input-group input-group-merge">-->
-                                <!--        <input type="text"  name="warrenty[0]" id="warrenty"  class="form-control" placeholder="General Specifications" required>-->
-                                <!--    </div>-->
-                                <!--</div>-->
-                                <!--  <div class="mb-3 col-md-1">-->
-                                <!--        <buttom class="btn btn-primary"  id="submitwabre" onclick="showValueWarrent()">Add -->
-                                <!-- </div>-->
+                                    <div class="input-group input-group-merge">
+                                        <input type="text"  name="warrenty[0]" id="warrenty"  class="form-control" placeholder="Apply Warrenty" required>
+                                    </div>
+                                </div>
+                                  <div class="mb-3 col-md-1">
+                                        <buttom class="btn btn-primary"  id="submitwabre" onclick="showValueWarrent()">Add 
+                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="basic-icon-default-fullname">Product overview</label>
-                                    <textarea name="Product_overview" id="Product_overview" rows="10"  class='form-control'></textarea>
-                                </div>
-                           
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="basic-icon-default-fullname">Specifications</label>
-                                    <textarea name="Specifications" id="Specifications" rows="10"  class='form-control'></textarea>
+                            <div class='row'>
+                                <div class='col-md-12 mt-5'>
+                                    <h4>Add Variation 
+                                    <!--<button class='btn btn-sm btn-primary' type='button' onclick='addMoreVariation()'>Add More</button>-->
+                                    </h4>
+                                    <table class='table'>
+                                        <thead>
+                                            <tr>
+                                                <th>Color</th>
+                                                <th>Color Name</th>
+                                                <th>Image</th>
+                                                <th>Image Url</th>
+                                                <!--<th>Action</th>-->
+                                            </tr>
+                                        </thead>
+                                        <tbody id='variationBody'>
+                                            <tr>
+                                                <td>
+                                                    <input type='color' name='color[0]' id='color[0]' class='form-control'/>
+                                                </td>
+                                                <td>
+                                                    <input type='text' name='colorName[0]' id='colorName[0]' class='form-control'/>
+                                                </td>
+                                                <td>
+                                                    <input type='file' name='imageFile[]' accept='image/*' multiple id='imageFile[0]' class='form-control'/>
+                                                </td>
+                                                <td>
+                                                    <input type='text' name='imageUrl[0]' id='imageUrl[0]' class='form-control'/>
+                                                </td>
+                                                <!--<td>-->
+                                                <!--    <button type='button' class='btn btn-sm btn-danger'><i class="fa fa-trash" aria-hidden="true"></i></button>-->
+                                                <!--</td>-->
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="basic-icon-default-fullname">Models</label>
-                                    <textarea name="Models" id="Models" rows="4"  class='form-control'></textarea>
-                                </div>
-                            
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="basic-icon-default-fullname">Resources</label>
-                                    <textarea name="editor1" id="editor" rows="4"  class='form-control'></textarea>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="mb-3 col-md-12">
-                                    <label class="form-label" for="basic-icon-default-fullname">Accessories</label>
-                                    <textarea name="Accessories" id="Accessories" rows="4"  class='form-control'></textarea>
-                                </div>
-                            </div>
-                            
-                            
-                           
-                          
                                 
                             <button class="btn btn-primary mt-5" name="submit">Submit</button>
                         </form>
@@ -240,61 +273,28 @@
         </div>
     </div>
     <!-- / Content -->
-    <div class="content-backdrop fade"></div>
 
-<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
- <script>
-                        ClassicEditor
-                                .create( document.querySelector( '#Product_overview' ) )
-                                .then( editor => {
-                                        console.log( editor );
-                                } )
-                                .catch( error => {
-                                        console.error( error );
-                                } );
-                                
-                                ClassicEditor
-                                .create( document.querySelector( '#editor' ) )
-                                .then( editor => {
-                                        console.log( editor );
-                                } )
-                                .catch( error => {
-                                        console.error( error );
-                                } );
-                                
-                                ClassicEditor
-                                .create( document.querySelector( '#Specifications' ) )
-                                .then( editor => {
-                                        console.log( editor );
-                                } )
-                                .catch( error => {
-                                        console.error( error );
-                                } );
-                                
-                                ClassicEditor
-                                .create( document.querySelector( '#Models' ) )
-                                .then( editor => {
-                                        console.log( editor );
-                                } )
-                                .catch( error => {
-                                        console.error( error );
-                                } );
-                                
-                                ClassicEditor
-                                .create( document.querySelector( '#Accessories' ) )
-                                .then( editor => {
-                                        console.log( editor );
-                                } )
-                                .catch( error => {
-                                        console.error( error );
-                                } );
-                                
-                                
-                                
-                </script>
-                
+<div class="content-backdrop fade"></div>
+
+<script type="text/javascript" src="<?php echo base_url('assets/') ?>js/virtual-select.min.js"></script>
+<script type="text/javascript">
+  VirtualSelect.init({ 
+  ele: '.multipleSelect' 
+  });
+
+  VirtualSelect.init({ 
+  ele: '.multipleSelects' 
+  });
+</script>
 <script type="text/javascript">
 
+$('.hidden-data-get').click(function(){
+    var catnames = $('#categoesies').val();
+    var descat = $("#description").val("Shop for ✓100% Pure & Organic " + catnames +" Products from our great selection at OrganiCart.co.in. Order now to get your health basket at home delivered. ✓Go cashless by paying online. ✓Cash on delivery is also available.");
+    var titelval = $('#titelid').val(" Buy Organic " + catnames +" Products Online at Best Prices in India - OrganiCart.co.in");
+                //alert(catnames);
+                //var catnam = $(this).attr('catnam');
+            });
 function showVariationModel(){
     $("#exampleModal").modal('show');
 }
@@ -349,10 +349,10 @@ function showAddDelivery() {
     i++;
     var l = i+1;
     $(".peorycdelivery").append(`<div class="col-md-12 mt-2 p-0">
-    <label class="form-label" for="basic-icon-default-fullname">TECHNICAL SPECIFICATIONS ${l}</label>
+    <label class="form-label" for="basic-icon-default-fullname">Delivery ${l}</label>
       <input type='hidden' id='delivry[` + i + `]' name='delivry[` + i + `]' value='` + i + `'/>
                            <input type="text" class="form-control" name="delivery[` + i + `]" id="delivery[` + i +
-        `]" placeholder="TECHNICAL SPECIFICATIONS" >
+        `]" placeholder="Delivery Content" >
                            <span style="color: red"></span>
                         </div>
                         `
@@ -361,18 +361,22 @@ function showAddDelivery() {
 }
 
 function showValueWarrent() {
-    let i = $("#warrntrowno").val();
+    
+        let i = $("#warrntrowno").val();
     i++;
     var l = i+1;
     $(".warentid").append(`<div class="col-md-12 mt-2 p-0">
-    <label class="form-label" for="basic-icon-default-fullname">GENERAL SPECIFICATIONS ${l}</label>
+    <label class="form-label" for="basic-icon-default-fullname">Warrenty ${l}</label>
       <input type='hidden' id='warrenthdnid[` + i + `]' name='warrenthdnid[` + i + `]' value='` + i + `'/>
                            <input type="text" class="form-control" name="warrenty[` + i + `]" id="warrenty[` + i +
-        `]" placeholder="GENERAL SPECIFICATIONS" >
+        `]" placeholder="Apply Warrenty" >
                            <span style="color: red"></span>
-                        </div>`
+                        </div>
+                        `
     );
     $("#warrntrowno").val(i);
+
+
 }
 
 
@@ -439,6 +443,33 @@ function showAddvalue() {
     
     
 }
+
+function showSubcatefunctionmini(){
+    var subcategory =  $(".subcategoesies").val();
+        $("#subcategorymymini");
+             $.ajax({
+                 type: "POST",
+                 url: "<?php echo base_url('admin/product/ProductController/getSubcategorymini') ?>",
+                 data: {  id: subcategory  },
+                 success: function(data) {
+                     
+                    var subcateg = JSON.parse(data);
+                    console.log(subcateg[0].subcategorymin);
+                    
+                    var test = "";
+                      for (var i = 0; i < subcateg.length; i++) {
+                          
+                          var subcategorymini = subcateg[i].subcategorymin;
+                          $("#subcategorymymini").append(`<option value="${subcateg[i].id}">${subcateg[i].subcategorymin}</option>`)
+                      }
+                
+                   return false;
+
+                   }
+               });
+    
+    
+}
 </script>
 <script>
 
@@ -458,27 +489,6 @@ if (my_bride_name != '') {
     //     return false;
     // } 
 }
-}
-    
-    
-function getChildSubCategory(){
-    var category =  $("#subcategorymy").val();
-    $("#childSubCatId").empty();
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url('admin/product/ProductController/getChildSubcategory') ?>",
-        data: {  id: category  },
-        success: function(data) {
-            var subcateg = JSON.parse(data);
-            console.log(subcateg[0].subcat);
-            var test = "";
-            for (var i = 0; i < subcateg.length; i++) {
-                var subcategory = subcateg[i].subcat;
-                $("#childSubCatId").append(`<option value="${subcateg[i].id}">${subcateg[i].category_name}</option>`)
-            }
-            return false;
-        }
-    });
 }
 
 function myFunction() {

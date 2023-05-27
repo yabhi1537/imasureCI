@@ -1,426 +1,646 @@
 <?php
-    $this->load->view('includes/header');
+
+        $this->load->view('includes/header');
+
 ?>
-<div class="page-content">
-    <div id="shopify-section-1586608150816" class="shopify-section index-section index-section--flush">
-        <div class="holder fullwidth fullboxed mt-0 full-nopad">
-            <div class="container">
-                <div class="bnslider-wrapper">
-                    <div class="bnslider keep-scale" data-start-width='1920' data-start-height='785'
-                        data-start-mwidth='414' data-start-mheight='736' id="bnslider-1586608150816"
-                        data-autoplay="true" data-speed="5000">
-                        <?php
-                        $slider = $this->db->get('sliders')->result_array();
-                       
-                        foreach($slider as $key => $valslider){
+<style>
+.addtocard {
+    background: black;
+    color: white;
+    width: 223px;
+    height: 50px;
+    border-radius: 13px;
+}
+</style>
+
+<main class="main-wrapper">
+    <section>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="<?php echo base_url() ?>assets/images/banner_img11.png"
+                        alt="First slide">
+                </div>
+                
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="<?php echo base_url() ?>assets/images/banner_img12.png"
+                        alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Start Expolre Product Area  -->
+    <div class="axil-product-area bg-color-white axil-section-gap">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <h2 class="title">Apple Macs</h2>
+            </div>
+            <div
+                class="explore-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide">
+                <div class="slick-single-layout">
+                    <div class="row row--15">
+
+                        <?php foreach($products as $producsdet){ 
+
+                            $exloder = explode(',',$producsdet['image']);
+                            $produc1 = $exloder[0];
+                            $prnameurl = strtolower(str_replace(" ","-",$producsdet['product_title']));
                             ?>
-                        <a  target="_self" class="bnslider-slide ">
-                            <div class="bnslider-image-mobile lazyload fade-up-fast"
-                                data-bgset="<?php echo base_url('admin-assets/uploads/').$valslider['imags'] ?>" data-sizes="auto"></div>
-                            <div class="bnslider-image lazyload fade-up-fast"
-                                data-bgset="<?php echo base_url('admin-assets/uploads/').$valslider['imags'] ?>" data-sizes="auto"></div>
-                            <div class="bnslider-text-wrap bnslider-overlay container">
-                                <div class="bnslider-text-content txt-middle txt-left txt-middle-m txt-center-m">
-                                    <div class="bnslider-text-content-flex  container ">
+                        <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 mt--30">
+                            <div class="axil-product product-style-one">
+                                <div class="thumbnail">
+                                    <a href="<?php echo base_url('singleproduct/').$prnameurl ?>">
+                                        <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800"
+                                            loading="lazy" class="main-img sal-animate"
+                                            src="<?php echo base_url('assets/images/product/'). $produc1 ?>"
+                                            alt="Product Images">
+                                        <img class="hover-img"
+                                            src="<?php echo base_url('assets/images/product/'). $produc1 ?>"
+                                            alt="Product Images">
+                                    </a>
+                                    <?php
+                                    if($producsdet['sales'] > 0){
+                                        ?>
+                                    <div class="label-block label-right">
+                                        <div class="product-badget">SALE</div>
+                                    </div>
                                         
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                            <?php
-                        }
-                        ?>
-
-                       
-                        <!--<a href="#" target="_self" class="bnslider-slide ">-->
-                        <!--    <div class="bnslider-image-mobile lazyload fade-up-fast"-->
-                        <!--        data-bgset="https://atzean.com/imeasure/assets/image/slider/Fluke_Banner.png" data-sizes="auto"></div>-->
-                        <!--    <div class="bnslider-image lazyload fade-up-fast" data-bgset="https://atzean.com/imeasure/assets/image/slider/Fluke_Banner.png"-->
-                        <!--        data-sizes="auto"></div>-->
-                        <!--    <div class="bnslider-text-wrap bnslider-overlay container">-->
-                        <!--        <div class="bnslider-text-content txt-middle txt-right txt-middle-m txt-center-m">-->
-                                   
-                        <!--        </div>-->
-                        <!--    </div>-->
-                        <!--</a>-->
-                    </div>
-                    <div class="bnslider-loader"></div>
-                    <div class="bnslider-arrows d-sm-none container">
-                        <div></div>
-                    </div>
-                    <div class="bnslider-dots d-none d-sm-block container"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="holder holder-mt-small" id="holderShopFeature">
-        <div class="container">
-            <div class="row no-gutters justify-content-center">
-                <div class="col-sm">
-                    <div class="shop-feature-bg row  ">
-                        <div class="shop-feature-icon col-auto"><i class="icon-delivery-truck"></i></div>
-                        <div class="shop-feature-text col">
-                            <div class="shop-feature-title heading-font">Fast Shipping</div>
-                            It allows customers to
-receive their goods in a
-shorter amount of time than
-the standard delivery time.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="shop-feature-bg row  ">
-                        <div class="shop-feature-icon col-auto"><i class="icon-return"></i></div>
-                        <div class="shop-feature-text col">
-                            <div class="shop-feature-title heading-font">Genuine products</div>
-                            Genuine products that are offered by brand owners, distributors, or other authorised parties
-                            are
-                            considered authentic goods.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="shop-feature-bg row  ">
-                        <div class="shop-feature-icon col-auto"><i class="icon-watch"></i></div>
-                        <div class="shop-feature-text col">
-                            <div class="shop-feature-title heading-font">24/7 Customer Support</div>
-                            24/7 Customer service or 24/7 tech support is a customer service strategy that involves
-                            providing support 24 hours a day, and 7 days a week.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <style>
-        #holderShopFeature .shop-feature-bg .shop-feature-icon {
-            color: #ffd800
-        }
-
-        #holderShopFeature .shop-feature-bg:hover .shop-feature-icon {
-            color: #ffd800
-        }
-
-        #holderShopFeature .shop-feature-bg {
-            background-color: #f7f7f8;
-        }
-
-        #holderShopFeature .shop-feature-bg:hover {
-            background: linear-gradient(45deg, rgba(237, 158, 3, 1) 0%, rgba(226, 8, 152, 1) 100%);
-        }
-
-        #holderShopFeature .shop-feature-bg .shop-feature-text {
-            color: #464b5c
-        }
-
-        #holderShopFeature .shop-feature-bg:hover .shop-feature-text {
-            color: #ffffff
-        }
-        </style>
-    </div>
-    <div class="holder holder-mt-small" id="holderCollectionGrid">
-        <div class="container">
-            <div class="collection-grid-2 row justify-content-center">
-                <?php
-                    foreach($products as $key => $value){
-                        $image = explode(',', $value['image']);
-                        $proUrl = $string = strtolower(str_replace(' ', '-', $value['product_title']));
-                        ?>
-                <!--<div class="collection-grid-2-item col-9 col-md-quarter col-lg-3">-->
-                <!--    <a href="<?php echo base_url('singleproduct/'.$proUrl) ?>" target="_self" class="bnr-wrap collection-grid-2-item-inside">-->
-                <!--        <div class="collection-grid-2-img image-container image-hover-scale"-->
-                <!--            style="padding-bottom: 77.778%"><img class="lazyload fade-up"-->
-                <!--                data-src="<?php echo base_url('assets/images/products/'.$image[0]) ?>" data-sizes="auto"-->
-                <!--                alt="Office equipment"></div>-->
-                <!--        <h3 class="collection-grid-2-title pb-15 heading-font"><?php echo $value['product_title'] ?></h3>-->
-                <!--    </a>-->
-                <!--</div>-->
-                  <?php
-                    }
-                ?>
-               
-            </div>
-            <style>
-            #holderCollectionGrid .collection-grid-2-title {
-                font-size: 16px;
-                font-weight: 600;
-                color: #464b5c
-            }
-
-            #holderCollectionGrid .collection-grid-2-title:hover {
-                color: #464b5c
-            }
-            </style>
-        </div>
-    </div>
-    <div class="holder">
-        <div class="container">
-            <div class="title-wrap title-md">
-                <h2 class="h2-style">FEATURED PRODUCTS</h2>
-            </div>
-            <div class="prd-grid-wrap position-relative">
-                <div
-                    class="prd-grid data-to-show-4 data-to-show-lg-3 data-to-show-md-2 data-to-show-sm-2 data-to-show-xs-2 js-category-grid ">
-                    <div class='row'>
-                        
-                    
-                    <?php
-                    
-                        foreach($featuredPro as $key => $value){
-                            $image = explode(',', $value['image']);
-                            $proUrl = $string = str_replace(' ', '-', $value['product_title']);
-                            ?>
-                            
-                    <div class="prd prd--style2 prd-labels--max prd-labels-shadow col-md-3">
-                        <div class="prd-inside">
-                            <div class="">
-                        <!--<img src="<?php echo base_url('assets/images/products/'.$image[0]) ?>">-->
-                                <a href="<?php echo base_url('product/'.$proUrl) ?>" class="">
-                                    <img src="<?php echo base_url('assets/images/products/'.$image[0]) ?>">
-                                    <div class="foxic-loader"></div>
-                                </a>
-                               
-                            </div>
-                            <div class="prd-info">
-                                <div class="prd-info-wrap">
+                                        <?php
+                                    }
                                     
-                                    <div class="prd-tag"><a href="<?php echo base_url('product/'.$proUrl) ?>"><?php echo $value['product_title'] ?></a></div>
-                                    <h2 class="prd-title"><a href="<?php echo base_url('product/'.$proUrl) ?>"><?php echo $value['pname'] ?></a></h2>
-                                    <div class="prd-description">
-                                        Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora
-                                        torquent per
-                                        conubia nostra, per inceptos himenaeos. Nam nec ante sed lacinia.
-                                    </div>
-                                    <div class="prd-action">
-                                        <form action="<?php echo base_url('product/'.$proUrl) ?>">
-                                            <button class="btn js-prd-addtocart"
-                                                data-product='{"name": "Window Air Conditioner", "path":"image/products/product-07-1.jpg", "url":"#", "aspect_ratio":0.778}'>Add
-                                                To Cart</button>
-                                        </form>
-                                    </div>
+                                    ?>
+
                                 </div>
-                                <div class="prd-hovers">
-                                    <div class="prd-circle-labels">
-                                        <div><a href="<?php echo base_url('product/'.$proUrl) ?>"
-                                                class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
-                                                title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a href="#"
-                                                class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
-                                                title="Remove From Wishlist"><i class="icon-heart-hover"></i></a></div>
-                                        <div class="prd-hide-mobile"><a href="<?php echo base_url('product/'.$proUrl) ?>"
-                                                class="circle-label-qview js-prd-quickview"
-                                                data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK
-                                                    VIEW</span></a></div>
-                                    </div>
-                                    <div class="prd-price">
-                                        <div class="price-old">$ 200</div>
-                                        <div class="price-new">$ 180</div>
-                                    </div>
-                                    <div class="prd-action">
-                                        <div class="prd-action-left">
-                                            <form action="<?php echo base_url('product/'.$proUrl) ?>">
-                                                <button class="btn js-prd-addtocart"
-                                                    data-product='{"name": "Window Air Conditioner", "path":"image/products/product-07-1.jpg", "url":"#", "aspect_ratio":0.778}'>Add
-                                                    To Cart</button>
-                                            </form>
+                                <div class="product-content">
+                                    <div class="inner text-center">
+                                        <h5 class="title">
+                                        <input type="hidden" name="hidname[<?php echo $producsdet['id'] ?>]" id='hidname[<?php echo $producsdet['id'] ?>]' value='<?php echo $producsdet['description'] ?>'>    
+                                        <a
+                                        
+                                              class='textoverplay'  href="<?php echo base_url('singleproduct/').$prnameurl ?>"><?php echo $producsdet['product_title'] ?></a>
+                                        </h5>
+                                        <!--<div class="product-rating text-center">-->
+                                        <!--    <span class="icon">-->
+                                        <!--        <i class="fas fa-star"></i>-->
+                                        <!--        <i class="fas fa-star"></i>-->
+                                        <!--        <i class="fas fa-star"></i>-->
+                                        <!--        <i class="fas fa-star"></i>-->
+                                        <!--        <i class="fas fa-star"></i>-->
+                                        <!--    </span>-->
+                                        <!--    <span class="rating-number">(64)</span>-->
+                                        <!--</div>-->
+                                        <div class="product-price-variant my-3">
+                                            <span class="price current-price">&#x20b9;
+                                                <?php echo $producsdet['price'] ?></span>
+                                            <span class="price old-price">&#x20b9;
+                                                <?php echo $producsdet['price'] ?></span>
+                                        </div>
+                                        <div class="product-">
+                                            <ul class="cart-action">
+                                                <li class="select-option w-50 bg-light">
+                                                    <a href="<?php echo base_url('singleproduct/').$prnameurl ?>" style='margin-left:-45px;' class="addtocard">Add To Cart</a>
+                                                    <!-- <button type="button" onclick='request(<?php echo $producsdet["pname"] ?>)' class="addtocard">Add To Cart</button> -->
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <?php } ?>
                     </div>
-                        <?php
-                        }
-                    ?>
-                   </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center mt--20 mt_sm--0">
+                    <a href="<?php echo base_url('products/mac')?>" class="axil-btn btn-bg-lighter btn-load-more">View All</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="title-wrap text-center title-with-behind mt-3">
-        <h4 class=" text-center"><a href="<?php echo base_url('all-products') ?>" title="View all">View All</a></h4>
-        <!--<div class="h-behind">TOP FISHERMAN</div>-->
-        <div class="carousel-arrows" style="margin:0 auto 65px; width:50px;"></div>
-    </div>
-    <div class="holder holder-mt-medium holder-with-bg holder-pt-medium holder-pb-medium bgcolor">
-        <div class="container">
-            <div class="title-wrap text-center title-with-behind">
-                <h2 class="h1-style text-center"><a href="blog.html" title="View all">OUR BLOG</a></h2>
-                <!--<div class="h-behind">TOP FISHERMAN</div>-->
-                <div class="carousel-arrows" style="margin:0 auto 65px; width:50px;"></div>
-            </div>
-            <div class="post-prws post-prws-carousel post-prws--row js-post-prws-carousel"
-                data-slick='{"slidesToShow": 3, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3 }},{"breakpoint": 480,"settings": {"slidesToShow": 1 }}]}'>
-                <!-- <div class="post-prw-vert col">
-                     <a href="#" class="post-prw-img image-hover-scale image-container" style="padding-bottom: 47.16%">
-                     <img class="lazyload fade-up w-100" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/skins/fishing/blog/blog-01.png" alt="How to Organize Your Fishing Gear">
-                     </a>
-                     <h4 class="post-prw-title"><a href="#">How to Organize Your Fishing Gear</a></h4>
-                     <div class="post-prw-links">
-                        <div class="post-prw-date"><i class="icon-calendar1"></i>
-                           May 28, 2020
-                        </div>
-                        <a href="#" class="post-prw-comments"><i class="icon-chat"></i>2 comments</a>
-                     </div>
-                  </div> -->
-                  <?php
-                  foreach($bloglist as $key => $value){
-                      $newDate = date("M d,Y", strtotime($value['create_at'])); 
-                      ?>
-                      
-                     
-                <div class="post-prw-vert col">
-                    <a href="<?php echo base_url('blog/'.$value['id']) ?>" class="post-prw-img image-hover-scale image-container" style="padding-bottom: 47.16%">
-                        <img class="lazyload fade-up w-100"
-                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                            data-src="<?php echo base_url('admin-assets/uploads/').$value['imags'] ?>" alt="How to Get Hooked on Ice Fishing">
-                    </a>
-                    <h4 class="post-prw-title"><a href="<?php echo base_url('blog/'.$value['id']) ?>"><?php echo $value['title'] ?></a></h4>
-                    <p><?php echo $value['heading'] ?>
-                    </p>
-                    <div class="post-prw-links">
-                        <div class="post-prw-date"><i class="icon-calendar1"></i>
-                           <?php echo $newDate ?>
-                        </div>
-                        <!--<a href="#" class="post-prw-comments"><i class="icon-chat"></i>3 comments</a>-->
-                    </div>
+    <!-- End Expolre Product Area  -->
+ <section class="py-5 overflow-hidden">
+           
+            <div class="row">
+                <div class="col-md-12">
+                   <img  src="<?php echo base_url('admin-assets/uploads/banner.1@3x.jpg') ?>" />
                 </div>
-                 <?php
-                  }
-                  ?>
+                <!-- End Single Product  -->
+                
+            </div>
+           
+    </section>
+  
+    <!-- apple ipad start-->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <h2 class="title">Apple iPad</h2>
+            </div>
+            <div class="row">
+                
+                <?php  
                
-            </div>
-        </div>
-    </div>
-    <div class="holder holder-mt-medium">
-        <div class="container">
-            <div class="title-wrap text-left">
-                <h2 class="h2-style">OUR PARTNERS</h2>
-            </div>
-            <ul class="brand-carousel js-brand-carousel slick-arrows-aside-simple"
-                data-slick='{"slidesToShow": 5,  "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 4 }},{"breakpoint": 480,"settings": {"slidesToShow": 2 }}]}'>
-                <?php
-                foreach($brandslist as $key => $brands){
-                    ?>
-                    <li>
-                        <div>
-                            <img class="lazyload lazypreload" data-src="<?php echo base_url('admin-assets/uploads/'.$brands['imags']) ?>" data-sizes="auto" alt="Brand">
-                        </div>
-                    </li>
-                    
-                    <?php
-                }
+                foreach($ipad as $ipadss){ 
+                $prnameurl = strtolower(str_replace(" ","-",$ipadss['product_title']));
                 ?>
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 prod-sect">
+                    <div class="axil-product product-style-one">
+                        <div class="thumbnail">
+                            <a href="<?php echo base_url('singleproduct/').$prnameurl ?>" tabindex="0">
+                                <?php
+                                     $img = explode(',',$ipadss['image']);
+                                     if(isset($img[1])){
+                                         $myimg = $img[1];
+                                     }else{
+                                         $myimg = $ipadss['image'];
+                                     }
+                                    ?>
+                                <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800" loading="lazy"
+                                    class="main-img sal-animate"
+                                    src="<?php echo base_url('assets/images/product/'). $myimg ?>"
+                                    alt="Product Images">
+                                    
+                                    <img class="hover-img"
+                                    src="<?php echo base_url('assets/images/product/'). $myimg ?>"
+                                    alt="Product Images">
+                            </a>
+                            <?php
+                            if($ipadss['sales'] > 0){
+                                ?>
+                            <div class="label-block label-right">
+                                <div class="product-badget">SALE</div>
+                            </div>
+                                
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="product-content">
+                            <div class="inner text-center">
+                                <h5 class="title">
+                                    <a class='textoverplay' href="<?php echo base_url('singleproduct/').$prnameurl ?>"
+                                        tabindex="0"><?php echo $ipadss['description'] ?></a>
+                                        </h5>
+
+                                <div class="product-price-variant my-3">
+                                    <span class="price current-price"><?php echo $ipadss['price'] ?></span>
+                                    <span
+                                        class="price old-price"><?php 
+                                        
+                                        if ($ipadss['discount'] > 0) {
+                                            echo $ipadss['qty'] + $ipadss['price'];
+                                            
+                                        } else {
+                                            // do some error handling...
+                                        echo $ipadss['price'];
+                                        }
+                                        ?>
+                                        </span>
+                                </div>
+                                <div class="product-">
+                                    <ul class="cart-action">
+                                        <li class="select-option w-50 bg-light">
+                                            <a href="<?php echo base_url('singleproduct/').$prnameurl ?>" style="margin-left:-45px;" class="addtocard" tabindex="0">Add To Cart</a>
+                                            <!--<a href="<?php echo base_url('singleproduct/').$ipadss['pname'] ?>"-->
+                                            <!--    tabindex="0">-->
+                                            <!--    Add to Cart-->
+                                            <!--</a>-->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                } ?>
+                <!-- End Single Product  -->
                
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center mt--20 mt_sm--0">
+                    <a href="<?php echo base_url('products/ipad') ?>" class="axil-btn btn-bg-lighter btn-load-more">View All</a>
+                </div>
+            </div>
+        </div>
+    </section>
+     <section class="py-5 overflow-hidden">
+           
+            <div class="row">
+                <div class="col-md-12">
+                   <img src="<?php echo base_url('admin-assets/uploads/banner@3x.jpg') ?>" />
+                </div>
+                <!-- End Single Product  -->
+                
+            </div>
+           
+    </section>
+    
+      <section class="py-5">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <h2 class="title">Apple IPhone</h2>
+            </div>
+            <div class="row">
+                <?php  foreach($iphone as $ipadss){ 
+                $prnameurl = strtolower(str_replace(" ","-",$ipadss['product_title']));
+                ?>
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 prod-sect">
+                    <div class="axil-product product-style-one">
+                        <div class="thumbnail">
+                           
+                                 <?php
+                                     $img = explode(',',$ipadss['image']);
+                                     if(isset($img[1])){
+                                         $myimg = $img[1];
+                                     }else{
+                                         $myimg = $ipadss['image'];
+                                     }
+                                 ?>
+                            <a href="<?php echo base_url('singleproduct/').$prnameurl ?>" tabindex="0">
+                                <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800" loading="lazy"
+                                    class="main-img sal-animate"
+                                    src="<?php echo base_url('assets/images/product/'). $myimg ?>"
+                                    alt="Product Images">
+                                    
+                                        <img class="hover-img"
+                                    src="<?php echo base_url('assets/images/product/'). $myimg ?>"
+                                    alt="Product Images">
+                            </a>
+                            <?php
+                            if($ipadss['sales'] > 0){
+                                ?>
+                            <div class="label-block label-right">
+                                <div class="product-badget">SALE</div>
+                            </div>
+                                
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="product-content">
+                            <div class="inner text-center">
+                                <h5 class="title">
+                                    <a class='textoverplay' href="<?php echo base_url('singleproduct/').$prnameurl ?>"
+                                        tabindex="0"><?php echo $ipadss['pname'] ?></a>
+                                        </h5>
+
+                                <div class="product-price-variant my-3">
+                                    <span class="price current-price"><?php echo $ipadss['price'] ?></span>
+                                    <span
+                                        class="price old-price"><?php 
+                                        
+                                        if ($ipadss['discount'] > 0) {
+                                            echo $ipadss['qty'] + $ipadss['price'];
+                                            
+                                        } else {
+                                            // do some error handling...
+                                        echo $ipadss['price'];
+                                        }
+                                        ?>
+                                        </span>
+                                    
+                                </div>
+                                <div class="product-">
+                                    <ul class="cart-action">
+                                        <li class="select-option w-50 bg-light">
+                                            <a href="<?php echo base_url('singleproduct/').$prnameurl ?>" style="margin-left:-45px;" class="addtocard" tabindex="0">Add To Cart</a>
+                                            <!--<a href="<?php echo base_url('singleproduct/').$prnameurl ?>"-->
+                                            <!--    tabindex="0">-->
+                                            <!--    Add to Cart-->
+                                            <!--</a>-->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+                <!-- End Single Product  -->
+                
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center mt--20 mt_sm--0">
+                    <a href="<?php echo base_url('products/iphone') ?>" class="axil-btn btn-bg-lighter btn-load-more">View All</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- apple ipad end-->
+
+    <div class="axil-why-choose-area  pb_sm--30 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 px-0">
+                    <div class="service-box px-3 border-0">
+                        <div class="icon">
+                            <img src="<?php echo base_url() ?>assets/images/telephone-call.png" alt="Service">
+                        </div>
+                        <h6 class="title">For Sales</h6>
+                        <p>Call us:- <a href="tel:+919826722345">+919826722345</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 px-0">
+                    <div class="service-box px-3 border-0">
+                        <div class="icon">
+                            <img src="<?php echo base_url() ?>assets/images/telephone-call.png" alt="Service">
+                        </div>
+                        <h6 class="title">for after sales</h6>
+                        <p>Call us:- <a href="tel:+919302100512">+919302100512</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 px-0">
+                    <div class="service-box px-3 border-0">
+                        <div class="icon">
+                            <img src="<?php echo base_url() ?>assets/images/email.png" alt="Service">
+                        </div>
+                        <h6 class="title">for after Sales</h6>
+                        <p>Contact us:- <a href = "mailto: sanjayneema@horizoncomputers.co.in">sanjayneema@horizoncomputers.co.in</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 px-0">
+                    <div class="service-box px-3 border-0">
+                        <div class="icon">
+                            <img src="<?php echo base_url() ?>assets/images/email.png" alt="Service">
+                        </div>
+                        <h6 class="title">For Sales</h6>
+                        <p>Contact us:- <a href = "mailto: tarun@horizoncomputers.co.in">tarun@horizoncomputers.co.in</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</main>
+
+
+<div class="cart-dropdown" id="cart-dropdown">
+    <div class="cart-content-wrap">
+        <div class="cart-header">
+            <h2 class="header-title">Cart review</h2>
+            <button class="cart-close sidebar-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-body">
+            <ul class="cart-item-list">
+                <li class="cart-item">
+                    <div class="item-img">
+                        <a href="single-#"><img
+                                src="<?php echo base_url() ?>assets/images/product/electric/product-01.png"
+                                alt="Commodo Blown Lamp"></a>
+                        <button class="close-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="item-content">
+                        <!--<div class="product-rating">-->
+                        <!--    <span class="icon">-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--    </span>-->
+                        <!--    <span class="rating-number">(64)</span>-->
+                        <!--</div>-->
+                        <h3 class="item-title"><a href="single-product-#">Wireless PS Handler</a></h3>
+                        <div class="item-price"><span class="currency-symbol">$</span>155.00</div>
+                        <div class="pro-qty item-quantity">
+                            <input type="number" class="quantity-input" value="15">
+                        </div>
+                    </div>
+                </li>
+                <li class="cart-item">
+                    <div class="item-img">
+                        <a href="single-product-#"><img
+                                src="<?php echo base_url() ?>assets/images/product/electric/product-02.png"
+                                alt="Commodo Blown Lamp"></a>
+                        <button class="close-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="item-content">
+                        <!--<div class="product-rating">-->
+                        <!--    <span class="icon">-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--    </span>-->
+                        <!--    <span class="rating-number">(4)</span>-->
+                        <!--</div>-->
+                        <h3 class="item-title"><a href="single-product-#">Gradient Light Keyboard</a></h3>
+                        <div class="item-price"><span class="currency-symbol">$</span>255.00</div>
+                        <div class="pro-qty item-quantity">
+                            <input type="number" class="quantity-input" value="5">
+                        </div>
+                    </div>
+                </li>
+                <li class="cart-item">
+                    <div class="item-img">
+                        <a href="single-product-#"><img
+                                src="<?php echo base_url() ?>assets/images/product/electric/product-03.png"
+                                alt="Commodo Blown Lamp"></a>
+                        <button class="close-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="item-content">
+                        <!--<div class="product-rating">-->
+                        <!--    <span class="icon">-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--    </span>-->
+                        <!--    <span class="rating-number">(6)</span>-->
+                        <!--</div>-->
+                        <h3 class="item-title"><a href="single-#">HD CC Camera</a></h3>
+                        <div class="item-price"><span class="currency-symbol">$</span>200.00</div>
+                        <div class="pro-qty item-quantity">
+                            <input type="number" class="quantity-input" value="100">
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
+        <div class="cart-footer">
+            <h3 class="cart-subtotal">
+                <span class="subtotal-title">Subtotal:</span>
+                <span class="subtotal-amount">$610.00</span>
+            </h3>
+            <div class="group-btn">
+                <a href="#" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
+                <a href="#" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
+            </div>
+        </div>
     </div>
-    	<div class="holder bgcolor py-5">
-			<div class="container py-2">
-				<div class="title-wrap text-center">
-					<h2 class="h1-style">Our Information</h2>
-					<p class="h-sub maxW-825">Nor again is there anyone who loves or pursues or desires to obtain pain
-						of itself, because it is pain, but because occasionally in which toil and pain</p>
-				</div>
-			    <div class="text-icn-blocks-row">
-					<div class="text-icn-block-hor">
-						<div class="icn">
-							<i class="icon-location"></i>
-						</div>
-						<div class="text">
-							<h4>Address:</h4>
-							<p>395/B, Clerk Colony, Opp. I.T.I. College Pardeshipura, 
-							Indore-452010 ( M. P. ) India</p>
-						</div>
-					</div>
-					<div class="text-icn-block-hor">
-						<div class="icn">
-							<i class="icon-phone"></i>
-						</div>
-						<div class="text">
-							<h4>Phone:</h4>
-							<p>+91 99932-99314<br>81092-09414</p>
-						</div>
-					</div>
-					<div class="text-icn-block-hor">
-						<div class="icn">
-							<i class="icon-info"></i>
-						</div>
-						<div class="text">
-							<h4>Email:</h4>
-							<p>i-zone@hotmail.com, marketing@i-zone.in</p>
-						</div>
-					</div>
-					<!--<div class="text-icn-block-hor">-->
-					<!--	<div class="icn">-->
-					<!--		<i class="icon-call-center"></i>-->
-					<!--	</div>-->
-					<!--	<div class="text">-->
-					<!--		<h4>Quick Help:</h4>-->
-					<!--		<p>+3 800 555 35 35<br>+3 800 555 35 35</p>-->
-					<!--	</div>-->
-					<!--</div>-->
-				</div>
-			</div>
-		</div>
-		<div class="holder">
-			<div class="container">
-				<div class="row vert-margin">
-					<div class="col-sm-9">
-						<div class="title-wrap">
-							<h2 class="h1-style">Get In Touch With Us</h2>
-							<div>Nor again is there anyone who loves or pursues or desires to obtain pain of itself,
-								because it is pain, but because occasionally in which toil and pain</div>
-						</div>
-						<form action="<?php echo base_url('Contactus/savecontact') ?>" method="POST">
-							<div class="form-confirm">
-								<div class="success-confirm">
-									Thanks! Your message has been sent. We will get back to you soon!
-								</div>
-								<div class="error-confirm">
-									Oops! There was an error submitting form. Refresh and send again.
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="row vert-margin-middle">
-									<div class="col-lg">
-										<input type="text" name="name" class="form-control form-control--sm"
-											placeholder="Name" required>
-									</div>
-									<div class="col-lg">
-										<input type="text" name="lastName" class="form-control form-control--sm"
-											placeholder="Last Name" required>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="row vert-margin-middle">
-									<div class="col-lg">
-										<input type="text" name="email" class="form-control form-control--sm"
-											placeholder="Email" required>
-									</div>
-									<div class="col-lg">
-										<input type="text" name="phone" class="form-control form-control--sm"
-											placeholder="Phone" required>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<textarea class="form-control form-control--sm textarea--height-200" name="message"
-									placeholder="Message" required></textarea>
-							</div>
-							<button class="btn" type="submit">Submit</button>
-						</form>
-					</div>
-					<div class="col-sm-9">
-						<div class="contact-map">
-							<iframe
-								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14718.365332638863!2d75.87185163006228!3d22.74342616152055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396303768e28b55f%3A0x303d377651e6ec2!2sI%20Measure!5e0!3m2!1sen!2sin!4v1680765198085!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    
 </div>
+
+<div class="cart-dropdown" id="cart-dropdown">
+    <div class="cart-content-wrap">
+        <div class="cart-header">
+            <h2 class="header-title">Cart reviews</h2>
+            <button class="cart-close sidebar-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-body">
+            <ul class="cart-item-list">
+                <li class="cart-item">
+                    <div class="item-img">
+                        <a href="single-#"><img
+                                src="<?php echo base_url() ?>assets/images/product/electric/product-01.png"
+                                alt="Commodo Blown Lamp"></a>
+                        <button class="close-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="item-content">
+                        <!--<div class="product-rating">-->
+                        <!--    <span class="icon">-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--    </span>-->
+                        <!--    <span class="rating-number">(64)</span>-->
+                        <!--</div>-->
+                        <h3 class="item-title"><a href="single-product-#">Wireless PS Handler</a></h3>
+                        <div class="item-price"><span class="currency-symbol">$</span>155.00</div>
+                        <div class="pro-qty item-quantity">
+                            <input type="number" class="quantity-input" value="15">
+                        </div>
+                    </div>
+                </li>
+                <li class="cart-item">
+                    <div class="item-img">
+                        <a href="single-product-#"><img
+                                src="<?php echo base_url() ?>assets/images/product/electric/product-02.png"
+                                alt="Commodo Blown Lamp"></a>
+                        <button class="close-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="item-content">
+                        <!--<div class="product-rating">-->
+                        <!--    <span class="icon">-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--    </span>-->
+                        <!--    <span class="rating-number">(4)</span>-->
+                        <!--</div>-->
+                        <h3 class="item-title"><a href="single-product-#">Gradient Light Keyboard</a></h3>
+                        <div class="item-price"><span class="currency-symbol">$</span>255.00</div>
+                        <div class="pro-qty item-quantity">
+                            <input type="number" class="quantity-input" value="5">
+                        </div>
+                    </div>
+                </li>
+                <li class="cart-item">
+                    <div class="item-img">
+                        <a href="single-product-#"><img
+                                src="<?php echo base_url() ?>assets/images/product/electric/product-03.png"
+                                alt="Commodo Blown Lamp"></a>
+                        <button class="close-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="item-content">
+                        <!--<div class="product-rating">-->
+                        <!--    <span class="icon">-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--        <i class="fas fa-star"></i>-->
+                        <!--    </span>-->
+                        <!--    <span class="rating-number">(6)</span>-->
+                        <!--</div>-->
+                        <h3 class="item-title"><a href="single-#">HD CC Camera</a></h3>
+                        <div class="item-price"><span class="currency-symbol">$</span>200.00</div>
+                        <div class="pro-qty item-quantity">
+                            <input type="number" class="quantity-input" value="100">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="cart-footer">
+            <h3 class="cart-subtotal">
+                <span class="subtotal-title">Subtotal:</span>
+                <span class="subtotal-amount">$610.00</span>
+            </h3>
+            <div class="group-btn">
+                <a href="#" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
+                <a href="#" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title proHeding" id="exampleModalLabel">
+                    
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<?php echo base_url('Singleproduct/addCard') ?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Name</label>
+                        <input type="hidden" name="hidenid" id='hidenid'>
+                        <input type="hidden" name="hidurl" id='hidurl' value='1'>
+                        <input type="text" class="form-control" name="name" required placeholder="Enter Full Name">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="">Email </label>
+                        <input type="email" class="form-control" name="email" required placeholder="Enter Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Mobile Number</label>
+                        <input type="number" class="form-control" name="mobile" required
+                            placeholder="Enter Mobile Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Address</label>
+                        <input type="text" class="form-control" name="address" required placeholder="Enter Address">
+                    </div>
+                </div>
+                <div class="modal-footer w-0">
+                    <button type="submit" class="savechanges btn btn-primary">Save
+                        changes</button>
+                    <button type="button" class="savechanges btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    function request(id){
+        // alert(id);
+        // alert(proname);
+        $("#hidenid").val(id);
+        $(".proHeding").html( $("#hidname\\["+id+"\\]").val());
+        $("#exampleModal").modal('show');
+    }
+</script>
+<!-- Start Footer Area  -->
 <?php 
-    $this->load->view('includes/footer');
-?>
+        $this->load->view('includes/footer');
+    ?>

@@ -19,7 +19,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login - imeasure</title>
+    <title>Login - Horizon</title>
     
     <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
@@ -138,11 +138,11 @@
                                     </svg>
 
                                 </span>
-                                <span class="app-brand-text demo text-body fw-bolder">imeasure</span>
+                                <span class="app-brand-text demo text-body fw-bolder">HORIZON</span>
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Welcome to imeasure! 👋</h4>
+                        <h4 class="mb-2">Welcome to HORIZON! 👋</h4>
                         <!-- <p class="mb-4">Please sign-in to your account and start the adventure</p> -->
 
                         <form class="mb-3"  action="<?php echo base_url('admin/LoginController/Login') ?>"  method="POST">

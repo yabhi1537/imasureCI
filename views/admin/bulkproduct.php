@@ -8,8 +8,8 @@
             <div class="col-xl">
                 <div class="card mb-4">
                     
-                    <div class="card-header d-flex justify-content-end align-items-center">
-                        <button class="btn btn-primary" id="smplefile" ><i class="fa fa-download" aria-hidden="true"></i> "CSV Sample"</button>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <button class="btn btn-primary" id="smplefile"><i class="fa fa-upload" aria-hidden="true"></i></button>
                         <!-- <h5 class="mb-0">Basic with Icons</h5> -->
                         <!-- <small class="text-muted float-end">Merged input group</small> -->
                     </div>
@@ -21,7 +21,7 @@
                         <?php } ?>
                         <?php
                             $failure = $this->session->userdata('failure');
-                            if($failure!=""){?>
+                            if($failure!=""){?> 
                         <div class="alert alert-danger"><?php echo $failure ?></div>
                     <?php } ?>
                         <form method="post" action="<?php echo base_url('admin/BulkController/store') ?>" enctype="multipart/form-data">
@@ -36,9 +36,6 @@
                               
                             </div>
                             
-
-
-                                
                             <button class="btn btn-primary" name="submit">Submit</button>
                     </div>
 
@@ -53,7 +50,8 @@
 <script>
 $('#smplefile').click(function(e) {
     e.preventDefault();  //stop the browser from following
-    window.location.href = '<?php echo base_url('admin-assets/uploads/product_final_sample.xlsx') ?>';
+    window.location.href = '<?php echo base_url('admin-assets/uploads/product.xlsx') ?>';
+    window.location.href = '<?php echo base_url('admin-assets/uploads/products.csv') ?>';
 });
 
 

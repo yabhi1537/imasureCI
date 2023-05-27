@@ -4,7 +4,7 @@
       <!--© <script>-->
       <!--document.write(new Date().getFullYear())-->
       <!--</script>-->
-      Made with ❤️ by imeasure
+      Made with ❤️ by Horizon Computer
     </div>
     <div>
       

@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                  
-                                <div class="mb-3 col-md-6"> 
+                                <div class="mb-3 col-md-6">
                                     <label class="form-label" for="basic-icon-default-fullname">About Story</label>
                                         <textarea name="editor1" class='form-control'><?php echo $headerfooter[0]['aboute_story'] ?></textarea>
                                 </div>
@@ -85,10 +85,6 @@
                                             placeholder="Enter" required name="footer_title" value='<?php echo $headerfooter[0]['footer_text'] ?>' />
                                     </div>
                                 </div>
-                                    <!-- <div class="mb-3 col-md-6">-->
-                                <!--    <label class="form-label" for="basic-icon-default-fullname">Use Link</label>-->
-                                <!--        <textarea name="use_link" class='form-control'><?php echo $headerfooter[0]['use_link'] ?></textarea>-->
-                                <!--</div> -->
                                
                             </div>
                             <button class="btn btn-primary" name="submit">Submit</button>
@@ -106,6 +102,5 @@
                         CKEDITOR.replace( 'editor1' );
                         CKEDITOR.replace( 'editor2' );
                         CKEDITOR.replace( 'editor3' );
-                        // CKEDITOR.replace( 'use_link' );
                 </script>
 <?php $this->load->view('admin/includes/footer');?>

@@ -24,17 +24,22 @@
             <!--    <h2 class="title" style="text-transform: capitalize;"><?php echo $subcate[0]['subcat'] ?></h2>-->
             <!--</div>-->
             <div class="row">
-                <?php  if(!empty($catetorydata)){ foreach($catetorydata as $catetorydatails){ ?>
+                <?php  if(!empty($catetorydata)){ foreach($catetorydata as $catetorydatails){
+                $imagesnnm =  explode(",",$catetorydatails['image']);
+                   $imagesname  =$imagesnnm[0];
+                   $subcaturl = strtolower(str_replace(" ","-",$catetorydatails['pname']));
+                
+                ?>
                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 prod-sect">
                     <div class="axil-product product-style-one">
                         <div class="thumbnail">
-                            <a href="<?php echo base_url('accessriess/singleaccesproduct/').$catetorydatails['pname'] ?>" tabindex="0">
+                            <a href="<?php echo base_url('accessriess/singleproduct/').$subcaturl ?>" tabindex="0">
                                 <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800" loading="lazy"
                                     class="main-img sal-animate"
-                                    src="<?php echo base_url('admin-assets/uploads/accessories/').$catetorydatails['image'] ?>"
+                                    src="<?php echo base_url('assets/images/product/').$imagesname ?>"
                                     alt="Product Images">
                                 <img class="hover-img"
-                                    src="<?php echo base_url('admin-assets/uploads/accessories/').$catetorydatails['image'] ?>"
+                                    src="<?php echo base_url('assets/images/product/').$imagesname ?>"
                                     alt="Product Images">
                             </a>
                             <div class="label-block label-right">
@@ -44,9 +49,9 @@
                         </div>
                         <div class="product-content">
                             <div class="inner text-center">
-                                <h4 class="title"><a href="<?php echo base_url('accessriess/singleaccesproduct/').$catetorydatails['pname'] ?>"
+                                <h4 class="title"><a href="<?php echo base_url('accessriess/singleproduct/').$subcaturl ?>"
                                         tabindex="0"><?php echo $catetorydatails['pname'] ?></a></h4>
-                                 <h5 class="title"><a href="<?php echo base_url('accessriess/singleaccesproduct/').$catetorydatails['pname'] ?>"
+                                 <h5 class="title"><a href="<?php echo base_url('accessriess/singleproduct/').$subcaturl ?>"
                                         tabindex="0"><?php echo $catetorydatails['description'] ?></a></h5>
     
                                 <div class="product-price-variant my-3">
@@ -57,7 +62,7 @@
                                 <div class="product-">
                                     <ul class="cart-action">
                                         <li class="select-option w-50 bg-light">
-                                             <a href="<?php echo base_url('accessriess/singleaccesproduct/').$catetorydatails['pname'] ?>" style="margin-left:-45px;" class="addtocard" tabindex="0">Add To Cart</a>
+                                             <a href="<?php echo base_url('accessriess/singleproduct/').$subcaturl ?>" style="margin-left:-45px;" class="addtocard" tabindex="0">Add To Cart</a>
                                             <!--<a href="<?php echo base_url('singleproduct/').$catetorydatails['pname'] ?>"-->
                                             <!--    tabindex="0">-->
                                             <!--    Add to Cart-->

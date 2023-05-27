@@ -55,8 +55,18 @@
                                 <td><?php echo $products['description'] ?></td>
 
                                
-                                <td class="text-center"><img src="<?php echo base_url('admin-assets/uploads/accessories/') ?><?php echo $products['image'] ?>" alt="" height="80" width="80"></td>
+                                <!--<td class="text-center"><img src="<?php echo base_url('admin-assets/uploads/accessories/') ?><?php echo $products['image'] ?>" alt="" height="80" width="80"></td>-->
+                                <!--<td>-->
+                                
+                                <?php 
+                                    $image = $products['image'];
+                                    $explodeed = explode(",",$image);
+                                    $images = $explodeed[0];
+                                ?>
+                                <td class="text-center"><img src="<?php echo base_url('admin-assets/uploads/accessories/').  $images ?>" alt="" height="50" width="50"></td>
                                 <td>
+                                    
+                            
                                     <a  href="<?php echo base_url('admin/accessories/Accessories/editAccessories/').$products['id'] ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;&nbsp;
                                     <button onclick="delFunction(<?php echo $products["id"] ?>)" style="background: white;  border: 1px; color: #4545fb;"><i class="fa fa-trash" aria-hidden="true"></i></button>&nbsp;&nbsp;&nbsp;
                                     <!--<a href="<?php echo base_url('admin/accessories/Accessories/editAccessories/').$products['id'] ?>"><i class="fa fa-eye" aria-hidden="true"></i></a>-->
